@@ -36,6 +36,7 @@ Fase 5a – README (architetto, modalità DOCUMENTAZIONE); presentazione già co
 - **Presentazione**: pubblico business non tecnico; parte principale business (6 slide) + sezione "Annex" con la struttura agentica. Connessioni dimostrative: ARERA, IVASS + Facile.it/Segugio.it (al posto di Subito.it, che è un sito di annunci), Open Banking, Banca d'Italia, App IO/pagoPA, MIMIT, SosTariffe.
 - **Fonti istituzionali**: aggiunta RB-26 "Dove verificare" (rimando neutro a MIMIT, IVASS, ARERA, Banca d'Italia per le voci sopra la media); scartata l'opzione "azioni correttive" esplicite.
 - **Presentazione affidata a un collega dell'utente**: da ora `presentation/` non va più modificata né dal `presentatore` né dall'orchestratore. Fase 5b chiusa lato agenti.
+- **Pagina iniziale**: dopo l'accesso si va sempre a **Profilo** (modifica dell'utente; cambiato `confirm-page.component.ts`, ng build verde).
 
 ## Cicli di correzione usati
 | Fase | Cicli usati | Limite |

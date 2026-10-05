@@ -70,13 +70,6 @@ export class ConfirmPageComponent implements OnInit, OnDestroy {
       return;
     }
     this.session.login(nome);
-    this.api.getProfilo(nome).subscribe({
-      next: (profilo) => {
-        this.router.navigateByUrl(profilo.statoProfilo === 'COMPLETO' ? '/analisi' : '/profilo');
-      },
-      error: () => {
-        this.router.navigateByUrl('/profilo');
-      },
-    });
+    this.router.navigateByUrl('/profilo');
   }
 }

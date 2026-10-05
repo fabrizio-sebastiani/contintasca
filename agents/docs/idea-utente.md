@@ -78,3 +78,6 @@ _(in raccolta)_
 8. **Campi obbligatori**: tutte le domande e tutte le 5 spese. Spese in numeri interi da 0 a 999.999 €, niente negativi.
 
 Ipotesi dell'analista accettate per silenzio: pagina Amministrazione accessibile a chiunque abbia fatto l'accesso (ruoli fuori ambito); "con chi ti confronti" costruito dalle risposte di Marco; "Da sapere" = testi fissi per dimensione × esito (sopra / in linea / sotto) + frase con la cifra + disclaimer e fonte.
+
+## Pagina iniziale
+- Dopo l'accesso (login + MFA) si va **sempre alla pagina Profilo**, anche se il profilo e' gia' compilato. _(Decisione dell'utente; sostituisce la regola "profilo completo -> Analisi di spesa".)_

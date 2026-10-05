@@ -131,9 +131,19 @@ import {
         max-width: 460px;
         margin: 0 auto;
       }
+      .colonna-box {
+        overflow-y: auto;
+        scrollbar-gutter: stable;
+      }
       @media (min-width: 900px) {
         .layout-analisi {
           grid-template-columns: 1.1fr 0.9fr;
+        }
+        /* Altezza fissa: il riquadro "Dove verificare" non deve far cambiare dimensione al box. */
+        .colonna-ragnatela,
+        .colonna-box {
+          height: 720px;
+          box-sizing: border-box;
         }
         .colonna-sotto {
           grid-column: 1 / span 2;

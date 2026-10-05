@@ -48,7 +48,10 @@ import {
         <section class="colonna-box card" aria-live="polite">
           <h1>{{ titoloBox() }}</h1>
           <p class="aiuto" style="margin-bottom: 0;">{{ testi.etichettaSpesaCorrente }}</p>
-          <p class="importo-grande" style="color: var(--colore-primario);">{{ euroFmt(voceCorrente()!.spesaCorrente) }}</p>
+          <p
+            class="importo-grande"
+            [style.color]="voceCorrente()!.spesaCorrente > voceCorrente()!.spesaCampione ? 'var(--colore-errore)' : 'var(--colore-primario)'"
+          >{{ euroFmt(voceCorrente()!.spesaCorrente) }}</p>
           <p class="aiuto" style="margin-bottom: 0;">{{ testi.etichettaSpesaCampione }}</p>
           <p class="importo-grande" style="color: var(--colore-testo-secondario);">{{ euroFmt(voceCorrente()!.spesaCampione) }}</p>
 
@@ -131,6 +134,9 @@ import {
       .titolo-ragnatela {
         align-self: stretch;
         margin: 0 0 16px;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--colore-testo);
       }
       .colonna-ragnatela app-radar-chart {
         width: 100%;

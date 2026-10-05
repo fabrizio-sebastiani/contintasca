@@ -17,13 +17,12 @@ import { nomeVoce, tabellaA, profilo, erroreProfiloCampo, erroreGenerico } from 
     } @else if (pronto()) {
       <div class="contenitore">
        <div class="card">
-        <h1>{{ testi.titoloMenuProfilo }}</h1>
-
-        <p>
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px;">
+          <h1 style="margin: 0;">{{ testi.titoloMenuProfilo }}</h1>
           <button type="button" class="btn-secondario" (click)="mostraAvvisoEstrattoConto.set(true)">
             {{ testi.pulsanteEstrattoConto }}
           </button>
-        </p>
+        </div>
         @if (mostraAvvisoEstrattoConto()) {
           <p class="avviso" role="status">{{ testi.avvisoEstrattoConto }}</p>
         }

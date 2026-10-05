@@ -35,7 +35,7 @@ import {
       </div>
     } @else if (dati()) {
       <div class="contenitore layout-analisi">
-        <section class="colonna-ragnatela">
+        <section class="colonna-ragnatela card">
           <app-radar-chart
             [voci]="dati()!.voci"
             [scalaMassima]="dati()!.scalaMassima"
@@ -44,19 +44,24 @@ import {
           />
         </section>
 
-        <section class="colonna-box" aria-live="polite">
+        <section class="colonna-box card" aria-live="polite">
           <h1>{{ titoloBox() }}</h1>
-          <p>{{ testi.etichettaSpesaCorrente }}: {{ euroFmt(voceCorrente()!.spesaCorrente) }}</p>
-          <p>{{ testi.etichettaSpesaCampione }}: {{ euroFmt(voceCorrente()!.spesaCampione) }}</p>
-          <h2>{{ testi.titoloDaSapere }}</h2>
-          <ul>
-            <li>{{ fraseA() }}</li>
-            <li>{{ fraseB() }}</li>
-            <li>{{ fraseC() }}</li>
-          </ul>
+          <p class="aiuto" style="margin-bottom: 0;">{{ testi.etichettaSpesaCorrente }}</p>
+          <p class="importo-grande" style="color: var(--colore-primario);">{{ euroFmt(voceCorrente()!.spesaCorrente) }}</p>
+          <p class="aiuto" style="margin-bottom: 0;">{{ testi.etichettaSpesaCampione }}</p>
+          <p class="importo-grande" style="color: var(--colore-testo-secondario);">{{ euroFmt(voceCorrente()!.spesaCampione) }}</p>
+
+          <div class="blocco-nota">
+            <h2>{{ testi.titoloDaSapere }}</h2>
+            <ul>
+              <li>{{ fraseA() }}</li>
+              <li>{{ fraseB() }}</li>
+              <li>{{ fraseC() }}</li>
+            </ul>
+          </div>
 
           @if (mostraDoveVerificare()) {
-            <section class="avviso-demo" aria-label="{{ testi2.titolo }}">
+            <div class="blocco-nota" aria-label="{{ testi2.titolo }}">
               <h2>{{ testi2.titolo }}</h2>
               <ul>
                 @for (link of linkVerifica(); track link.url) {
@@ -69,8 +74,8 @@ import {
                   </li>
                 }
               </ul>
-              <p>{{ testi2.chiusura }}</p>
-            </section>
+              <p style="margin-bottom: 0;">{{ testi2.chiusura }}</p>
+            </div>
           }
 
           <button type="button" class="btn-secondario" (click)="vediTotali()">
@@ -78,7 +83,7 @@ import {
           </button>
         </section>
 
-        <section class="colonna-sotto">
+        <section class="colonna-sotto card">
           <h2>{{ testi.titoloConfronto }}</h2>
           <p>{{ fraseConfronto() }}</p>
           @if (dati()!.approssimato) {
@@ -111,10 +116,24 @@ import {
         display: grid;
         grid-template-columns: 1fr;
         gap: 24px;
+        align-items: stretch;
+      }
+      .layout-analisi .card {
+        margin-top: 0;
+      }
+      .colonna-ragnatela {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .colonna-ragnatela app-radar-chart {
+        width: 100%;
+        max-width: 460px;
+        margin: 0 auto;
       }
       @media (min-width: 900px) {
         .layout-analisi {
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1.1fr 0.9fr;
         }
         .colonna-sotto {
           grid-column: 1 / span 2;

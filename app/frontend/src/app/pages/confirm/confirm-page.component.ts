@@ -10,11 +10,15 @@ const SECONDI_ATTESA = 5;
   selector: 'app-confirm-page',
   standalone: true,
   template: `
-    <div class="contenitore" style="max-width: 420px; text-align: center;">
-      <p>{{ testi.notificaInviata }}</p>
-      <p class="avviso-demo">{{ testi.avvisoDemo }}</p>
-      <p aria-live="polite" style="font-size: 48px; font-weight: 700;">{{ secondiRimasti() }}</p>
-      <button type="button" class="btn-secondario" (click)="annulla()">{{ testi.pulsanteAnnulla }}</button>
+    <div class="pagina-centrata">
+      <div class="card card-login" style="text-align: center;">
+        <p>{{ testi.notificaInviata }}</p>
+        <p class="avviso-demo">{{ testi.avvisoDemo }}</p>
+        <p aria-live="polite" style="font-size: 48px; font-weight: 700; color: var(--colore-primario); margin: 12px 0;">
+          {{ secondiRimasti() }}
+        </p>
+        <button type="button" class="btn-secondario" (click)="annulla()">{{ testi.pulsanteAnnulla }}</button>
+      </div>
     </div>
   `,
 })

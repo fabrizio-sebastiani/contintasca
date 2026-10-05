@@ -9,62 +9,66 @@ import { dataOra } from '../../format';
   standalone: true,
   template: `
     <div class="contenitore">
-      <h1>{{ testi.titolo }}</h1>
-      <p>{{ testi.testoFisso }}</p>
+      <div class="card">
+        <h1>{{ testi.titolo }}</h1>
+        <p>{{ testi.testoFisso }}</p>
 
-      <section class="avviso-demo">
-        <h2>{{ testi.titoloDatiAttuali }}</h2>
-        @if (datiAttuali() && datiAttuali()!.caricato) {
-          <ul>
-            <li>Nome del file: {{ datiAttuali()!.nomeFile }}</li>
-            <li>Caricato il: {{ dataOraFmt(datiAttuali()!.caricatoIl!) }}</li>
-            <li>Numero di domande: {{ datiAttuali()!.numeroDomande }}</li>
-            <li>Numero di fasce: {{ datiAttuali()!.numeroFasce }}</li>
-          </ul>
-        } @else {
-          <p>{{ testi.nessunDatoCaricato }}</p>
-        }
-      </section>
-
-      <div class="campo">
-        <label for="file-dati">{{ testi.etichettaFile }}</label>
-        <input id="file-dati" type="file" accept=".csv" (change)="selezionaFile($event)" />
-      </div>
-
-      @if (erroreCaricamento()) {
-        <p class="messaggio-errore" role="alert">{{ erroreCaricamento() }}</p>
-      }
-
-      <button type="button" class="btn-principale" (click)="carica()" [disabled]="inCorso()">
-        {{ testi.pulsanteCarica }}
-      </button>
-
-      @if (esito()) {
-        <section style="margin-top: 24px;">
-          <p><strong>{{ testi.caricamentoCompletato }}</strong></p>
-          <p>{{ testi.righeLette(esito()!.righeLette) }}</p>
-          <p>{{ testi.righeImportate(esito()!.righeImportate) }}</p>
-          <p>{{ testi.righeScartate(esito()!.righeScartate) }}</p>
-          @if (esito()!.scarti.length > 0) {
-            <table>
-              <thead>
-                <tr>
-                  <th>{{ testi.intestazioneRiga }}</th>
-                  <th>{{ testi.intestazioneMotivo }}</th>
-                </tr>
-              </thead>
-              <tbody>
-                @for (scarto of esito()!.scarti; track scarto.riga) {
-                  <tr>
-                    <td>{{ scarto.riga }}</td>
-                    <td>{{ motivo(scarto.codice) }}</td>
-                  </tr>
-                }
-              </tbody>
-            </table>
+        <section class="blocco-nota">
+          <h2>{{ testi.titoloDatiAttuali }}</h2>
+          @if (datiAttuali() && datiAttuali()!.caricato) {
+            <ul>
+              <li>Nome del file: {{ datiAttuali()!.nomeFile }}</li>
+              <li>Caricato il: {{ dataOraFmt(datiAttuali()!.caricatoIl!) }}</li>
+              <li>Numero di domande: {{ datiAttuali()!.numeroDomande }}</li>
+              <li>Numero di fasce: {{ datiAttuali()!.numeroFasce }}</li>
+            </ul>
+          } @else {
+            <p>{{ testi.nessunDatoCaricato }}</p>
           }
         </section>
-      }
+
+        <div class="area-upload">
+          <div class="campo" style="margin-bottom: 12px;">
+            <label for="file-dati">{{ testi.etichettaFile }}</label>
+            <input id="file-dati" type="file" accept=".csv" (change)="selezionaFile($event)" />
+          </div>
+
+          @if (erroreCaricamento()) {
+            <p class="messaggio-errore" role="alert">{{ erroreCaricamento() }}</p>
+          }
+
+          <button type="button" class="btn-principale" (click)="carica()" [disabled]="inCorso()">
+            {{ testi.pulsanteCarica }}
+          </button>
+        </div>
+
+        @if (esito()) {
+          <section style="margin-top: 8px;">
+            <p><strong>{{ testi.caricamentoCompletato }}</strong></p>
+            <p>{{ testi.righeLette(esito()!.righeLette) }}</p>
+            <p>{{ testi.righeImportate(esito()!.righeImportate) }}</p>
+            <p>{{ testi.righeScartate(esito()!.righeScartate) }}</p>
+            @if (esito()!.scarti.length > 0) {
+              <table>
+                <thead>
+                  <tr>
+                    <th>{{ testi.intestazioneRiga }}</th>
+                    <th>{{ testi.intestazioneMotivo }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (scarto of esito()!.scarti; track scarto.riga) {
+                    <tr>
+                      <td>{{ scarto.riga }}</td>
+                      <td>{{ motivo(scarto.codice) }}</td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            }
+          </section>
+        }
+      </div>
     </div>
   `,
 })

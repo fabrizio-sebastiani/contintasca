@@ -277,3 +277,5 @@ Alla fine Marco capisce:
 - **OB-A-05** → RB-04 (accesso valido per la scheda: resta con il ricaricamento, si perde con "Esci" o chiudendo la scheda), CA-03 (caso ricaricamento), Fuori ambito (scadenza "a tempo").
 - **OB-A-06** → S-04 Parte A (etichetta breve e testo della domanda), RB-18 (formato "<etichetta>: <risposta>", numeri con punto delle migliaia senza unità), RB-24 (dati conservati), RB-23, CA-10.
 - **OB-C-01** → RB-23 (spiegazione obbligatoria per "Sesso" e opzione "Preferisco non rispondere" con punteggio 0), sezione 7 (nuovo vincolo sulla domanda "Sesso"). La domanda resta, perché chiesta dall'utente.
+
+- **Modifica successiva dell'utente (pagina iniziale)**: dopo l'accesso si va **sempre** a S-04 Profilo. Sostituisce la parte di RB-03 / CA-02 che portava ad Analisi di spesa quando il profilo e' COMPLETO. Non e' una regressione.

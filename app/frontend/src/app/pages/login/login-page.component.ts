@@ -11,47 +11,49 @@ import { ApiError } from '../../api.models';
   standalone: true,
   imports: [ReactiveFormsModule],
   template: `
-    <div class="contenitore" style="max-width: 420px;">
-      <h1>{{ nomeApp }}</h1>
-      <p>{{ testi.frasePresentazione }}</p>
-      <p class="avviso-demo">{{ testi.avvisoDemo }}</p>
-      @if (erroreGenerale()) {
-        <p class="messaggio-errore" role="alert">{{ erroreGenerale() }}</p>
-      }
+    <div class="pagina-centrata">
+      <div class="card card-login">
+        <h1>{{ nomeApp }}</h1>
+        <p>{{ testi.frasePresentazione }}</p>
+        <p class="avviso-demo">{{ testi.avvisoDemo }}</p>
+        @if (erroreGenerale()) {
+          <p class="messaggio-errore" role="alert">{{ erroreGenerale() }}</p>
+        }
 
-      <form [formGroup]="form" (ngSubmit)="accedi()" novalidate>
-        <div class="campo">
-          <label for="nomeUtente">{{ testi.etichettaNomeUtente }}</label>
-          <input
-            id="nomeUtente"
-            type="text"
-            formControlName="nomeUtente"
-            [attr.aria-invalid]="erroreNomeUtente() ? 'true' : null"
-            [attr.aria-describedby]="erroreNomeUtente() ? 'errore-nomeUtente' : null"
-            autocomplete="username"
-          />
-          @if (erroreNomeUtente()) {
-            <p class="messaggio-errore" id="errore-nomeUtente">{{ erroreNomeUtente() }}</p>
-          }
-        </div>
+        <form [formGroup]="form" (ngSubmit)="accedi()" novalidate>
+          <div class="campo">
+            <label for="nomeUtente">{{ testi.etichettaNomeUtente }}</label>
+            <input
+              id="nomeUtente"
+              type="text"
+              formControlName="nomeUtente"
+              [attr.aria-invalid]="erroreNomeUtente() ? 'true' : null"
+              [attr.aria-describedby]="erroreNomeUtente() ? 'errore-nomeUtente' : null"
+              autocomplete="username"
+            />
+            @if (erroreNomeUtente()) {
+              <p class="messaggio-errore" id="errore-nomeUtente">{{ erroreNomeUtente() }}</p>
+            }
+          </div>
 
-        <div class="campo">
-          <label for="password">{{ testi.etichettaPassword }}</label>
-          <input
-            id="password"
-            type="password"
-            formControlName="password"
-            [attr.aria-invalid]="errorePassword() ? 'true' : null"
-            [attr.aria-describedby]="errorePassword() ? 'errore-password' : null"
-            autocomplete="current-password"
-          />
-          @if (errorePassword()) {
-            <p class="messaggio-errore" id="errore-password">{{ errorePassword() }}</p>
-          }
-        </div>
+          <div class="campo">
+            <label for="password">{{ testi.etichettaPassword }}</label>
+            <input
+              id="password"
+              type="password"
+              formControlName="password"
+              [attr.aria-invalid]="errorePassword() ? 'true' : null"
+              [attr.aria-describedby]="errorePassword() ? 'errore-password' : null"
+              autocomplete="current-password"
+            />
+            @if (errorePassword()) {
+              <p class="messaggio-errore" id="errore-password">{{ errorePassword() }}</p>
+            }
+          </div>
 
-        <button type="submit" class="btn-principale" [disabled]="inCorso()">{{ testi.pulsanteAccedi }}</button>
-      </form>
+          <button type="submit" class="btn-principale" [disabled]="inCorso()">{{ testi.pulsanteAccedi }}</button>
+        </form>
+      </div>
     </div>
   `,
 })

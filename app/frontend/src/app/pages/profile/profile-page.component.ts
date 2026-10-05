@@ -16,6 +16,7 @@ import { nomeVoce, tabellaA, profilo, erroreProfiloCampo, erroreGenerico } from 
       <app-no-data />
     } @else if (pronto()) {
       <div class="contenitore">
+       <div class="card">
         <h1>{{ testi.titoloMenuProfilo }}</h1>
 
         @if (avvisoNonPiuCompleto()) {
@@ -105,6 +106,7 @@ import { nomeVoce, tabellaA, profilo, erroreProfiloCampo, erroreGenerico } from 
 
           <button type="submit" class="btn-principale" [disabled]="inCorso()">{{ testi.pulsanteSalva }}</button>
         </form>
+       </div>
       </div>
     }
   `,

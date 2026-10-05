@@ -1,17 +1,24 @@
 /* Stile di base - "ContiInTasca". Calmo, leggibile, un passo alla volta. */
 
 :root {
-  --colore-testo: #1b2430;
-  --colore-sfondo: #f7f8fa;
-  --colore-primario: #0b5fa5;
-  --colore-primario-scuro: #073e6e;
-  --colore-bordo: #c7cdd6;
-  --colore-errore: #b3261e;
-  --colore-errore-sfondo: #fbeceb;
+  --colore-testo: #1f1a24;
+  --colore-testo-secondario: #5a5566;
+  --colore-sfondo: #f6f4fa;
+  --colore-primario: #7500c0;
+  --colore-primario-scuro: #5b0096;
+  --colore-primario-chiaro: #a100ff;
+  --colore-primario-hover-sfondo: #f1e6ff;
+  --colore-bordo: #d9d3e3;
+  --colore-errore: #b00020;
+  --colore-errore-sfondo: #fbeaec;
   --colore-ok: #1e6b3c;
   --colore-avviso-sfondo: #fff4d6;
   --colore-avviso-bordo: #caa200;
-  --focus-outline: 3px solid #0b5fa5;
+  --ombra-morbida: 0 2px 16px rgba(31, 26, 36, 0.08);
+  --ombra-leggera: 0 1px 6px rgba(31, 26, 36, 0.08);
+  --raggio-card: 12px;
+  --raggio-campo: 8px;
+  --focus-outline: 3px solid var(--colore-primario);
 }
 
 * {
@@ -24,15 +31,34 @@ html, body {
 
 body {
   margin: 0;
-  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
-  font-size: 18px;
+  font-family: system-ui, "Segoe UI", Arial, Helvetica, sans-serif;
+  font-size: 16px;
   line-height: 1.5;
   color: var(--colore-testo);
   background: var(--colore-sfondo);
 }
 
-h1, h2, h3 {
-  line-height: 1.3;
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  color: var(--colore-testo);
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: var(--colore-testo);
+}
+
+h3 {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+p {
+  color: var(--colore-testo);
 }
 
 a {
@@ -49,13 +75,52 @@ button, input, select {
   outline-offset: 2px;
 }
 
+/* ----------------------------------------------------------------------- */
+/* Layout generale */
+/* ----------------------------------------------------------------------- */
+
+.contenitore {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.pagina-centrata {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.card {
+  background: #fff;
+  border-radius: var(--raggio-card);
+  box-shadow: var(--ombra-morbida);
+  padding: 32px;
+}
+
+.card + .card {
+  margin-top: 24px;
+}
+
+.card-login {
+  width: 100%;
+  max-width: 440px;
+}
+
+/* ----------------------------------------------------------------------- */
+/* Pulsanti */
+/* ----------------------------------------------------------------------- */
+
 .btn-principale {
   background: var(--colore-primario);
   color: #fff;
   border: none;
-  border-radius: 6px;
-  padding: 12px 24px;
-  font-size: 18px;
+  border-radius: var(--raggio-campo);
+  padding: 0 24px;
+  height: 44px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
 }
@@ -65,7 +130,7 @@ button, input, select {
 }
 
 .btn-principale:disabled {
-  background: #9aa5b1;
+  background: #c7bdd6;
   cursor: not-allowed;
 }
 
@@ -73,11 +138,21 @@ button, input, select {
   background: #fff;
   color: var(--colore-primario-scuro);
   border: 2px solid var(--colore-primario);
-  border-radius: 6px;
-  padding: 10px 20px;
+  border-radius: var(--raggio-campo);
+  padding: 0 20px;
+  height: 44px;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
 }
+
+.btn-secondario:hover {
+  background: var(--colore-primario-hover-sfondo);
+}
+
+/* ----------------------------------------------------------------------- */
+/* Campi di modulo */
+/* ----------------------------------------------------------------------- */
 
 .campo {
   margin-bottom: 20px;
@@ -85,74 +160,89 @@ button, input, select {
 
 .campo label {
   display: block;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 6px;
 }
 
 .campo input[type="text"],
 .campo input[type="password"],
+.campo input[type="file"],
 .campo select {
   width: 100%;
-  max-width: 420px;
-  padding: 10px;
-  border: 2px solid var(--colore-bordo);
-  border-radius: 6px;
-  font-size: 18px;
+  max-width: 480px;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--colore-bordo);
+  border-radius: var(--raggio-campo);
+  font-size: 16px;
+  background: #fff;
+}
+
+.campo input[type="file"] {
+  height: auto;
+  padding: 10px 12px;
+}
+
+.campo input:focus-visible,
+.campo select:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 1px;
 }
 
 .campo input[aria-invalid="true"],
 .campo select[aria-invalid="true"] {
   border-color: var(--colore-errore);
+  border-width: 2px;
 }
 
 .aiuto {
-  font-size: 15px;
-  color: #4a5567;
+  font-size: 14px;
+  color: var(--colore-testo-secondario);
   margin-top: 4px;
 }
 
 .messaggio-errore {
   color: var(--colore-errore);
-  font-size: 15px;
-  margin-top: 4px;
+  font-size: 14px;
+  margin-top: 6px;
   font-weight: 600;
 }
 
 .riepilogo-errori {
   background: var(--colore-errore-sfondo);
-  border: 2px solid var(--colore-errore);
-  border-radius: 6px;
+  border-left: 4px solid var(--colore-errore);
+  border-radius: var(--raggio-campo);
   padding: 14px 18px;
   margin-bottom: 20px;
   font-weight: 600;
+  color: var(--colore-errore);
 }
 
 .avviso {
   background: var(--colore-avviso-sfondo);
-  border: 2px solid var(--colore-avviso-bordo);
-  border-radius: 6px;
+  border-left: 4px solid var(--colore-avviso-bordo);
+  border-radius: var(--raggio-campo);
   padding: 14px 18px;
   margin-bottom: 20px;
 }
 
+/* Badge "accesso dimostrativo": pillola viola chiaro */
 .avviso-demo {
-  background: #e6f0fa;
-  border: 2px solid var(--colore-primario);
-  border-radius: 6px;
-  padding: 12px 18px;
+  display: inline-block;
+  background: var(--colore-primario-hover-sfondo);
+  color: var(--colore-primario-scuro);
+  border: none;
+  border-radius: 999px;
+  padding: 8px 18px;
   margin-bottom: 20px;
-}
-
-.contenitore {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 24px;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .radio-opzioni {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .radio-opzioni label {
@@ -162,6 +252,10 @@ button, input, select {
   gap: 8px;
 }
 
+/* ----------------------------------------------------------------------- */
+/* Tabelle */
+/* ----------------------------------------------------------------------- */
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -169,12 +263,63 @@ table {
 
 th, td {
   text-align: left;
-  padding: 8px 12px;
+  padding: 10px 14px;
   border-bottom: 1px solid var(--colore-bordo);
 }
 
-.disclaimer {
+th {
+  color: var(--colore-testo-secondario);
   font-size: 14px;
-  color: #4a5567;
-  margin-top: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+tbody tr:nth-child(even) {
+  background: var(--colore-sfondo);
+}
+
+/* ----------------------------------------------------------------------- */
+/* Blocchi informativi con bordo sinistro viola (Da sapere, Dove verificare) */
+/* ----------------------------------------------------------------------- */
+
+.blocco-nota {
+  border-left: 4px solid var(--colore-primario);
+  background: var(--colore-primario-hover-sfondo);
+  border-radius: 0 var(--raggio-campo) var(--raggio-campo) 0;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+
+.blocco-nota h2 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.blocco-nota ul,
+.blocco-nota li {
+  margin: 0;
+}
+
+.blocco-nota li + li {
+  margin-top: 10px;
+}
+
+.area-upload {
+  border: 2px dashed var(--colore-bordo);
+  border-radius: var(--raggio-card);
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.importo-grande {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 4px 0 16px;
+}
+
+.disclaimer {
+  font-size: 13px;
+  color: var(--colore-testo-secondario);
+  margin-top: 20px;
 }

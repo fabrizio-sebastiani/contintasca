@@ -13,19 +13,24 @@ import { nomeVoce, analisi } from '../../testi';
       <svg viewBox="0 0 520 440" role="img" [attr.aria-label]="'Ragnatela della spesa'" width="100%" height="auto">
         <!-- Griglia: 4 pentagoni concentrici -->
         @for (k of [1, 2, 3, 4]; track k) {
-          <polygon [attr.points]="anelloGriglia(k)" fill="none" stroke="#c7cdd6" stroke-width="1" />
+          <polygon [attr.points]="anelloGriglia(k)" fill="none" stroke="#e3dcee" stroke-width="1" />
         }
 
-        <!-- Poligono spesa campione (tratteggiato) -->
+        <!-- Poligono spesa campione (grigio tratteggiato) -->
         <polygon
           [attr.points]="poligono('spesaCampione')"
           fill="none"
-          stroke="#8a5a00"
-          stroke-width="3"
+          stroke="#9b94a6"
+          stroke-width="2.5"
           stroke-dasharray="8 6"
         />
-        <!-- Poligono la tua spesa (continuo) -->
-        <polygon [attr.points]="poligono('spesaCorrente')" fill="none" stroke="#0b5fa5" stroke-width="3" />
+        <!-- Poligono la tua spesa (viola pieno semitrasparente) -->
+        <polygon
+          [attr.points]="poligono('spesaCorrente')"
+          fill="rgba(117, 0, 192, 0.16)"
+          stroke="#7500c0"
+          stroke-width="3"
+        />
 
         <!-- Rami -->
         @for (voce of voci(); track voce.voce; let i = $index) {
@@ -55,26 +60,27 @@ import { nomeVoce, analisi } from '../../testi';
               [attr.y1]="cy"
               [attr.x2]="assePunto(i).x"
               [attr.y2]="assePunto(i).y"
-              [attr.stroke]="voceMostrata() === voce.voce ? '#073e6e' : '#c7cdd6'"
+              [attr.stroke]="voceMostrata() === voce.voce ? '#7500c0' : '#d9d3e3'"
               [attr.stroke-width]="voceMostrata() === voce.voce ? 3 : 1"
             />
             <circle
               [attr.cx]="puntoValore(i, voce.spesaCorrente).x"
               [attr.cy]="puntoValore(i, voce.spesaCorrente).y"
-              r="5"
-              fill="#0b5fa5"
+              [attr.r]="voceMostrata() === voce.voce ? 7 : 5"
+              fill="#7500c0"
             />
             <circle
               [attr.cx]="puntoValore(i, voce.spesaCampione).x"
               [attr.cy]="puntoValore(i, voce.spesaCampione).y"
-              r="5"
-              fill="#8a5a00"
+              [attr.r]="voceMostrata() === voce.voce ? 7 : 5"
+              fill="#9b94a6"
             />
             <text
               [attr.x]="puntoEtichetta(i).x"
               [attr.y]="puntoEtichetta(i).y"
               [attr.text-anchor]="ancoraggio(i)"
               [attr.font-weight]="voceMostrata() === voce.voce ? 'bold' : 'normal'"
+              [attr.fill]="voceMostrata() === voce.voce ? '#7500c0' : '#1f1a24'"
               font-size="15"
             >
               {{ nomeVoceDi(voce.voce) }}
@@ -90,14 +96,14 @@ import { nomeVoce, analisi } from '../../testi';
           </g>
         }
       </svg>
-      <figcaption>
-        <span style="display: inline-flex; align-items: center; gap: 6px; margin-right: 18px;">
-          <svg width="24" height="8" aria-hidden="true"><line x1="0" y1="4" x2="24" y2="4" stroke="#0b5fa5" stroke-width="3" /></svg>
+      <figcaption style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 8px;">
+        <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600;">
+          <svg width="24" height="8" aria-hidden="true"><line x1="0" y1="4" x2="24" y2="4" stroke="#7500c0" stroke-width="3" /></svg>
           {{ testi.legendaCorrente }}
         </span>
-        <span style="display: inline-flex; align-items: center; gap: 6px;">
+        <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--colore-testo-secondario);">
           <svg width="24" height="8" aria-hidden="true"
-            ><line x1="0" y1="4" x2="24" y2="4" stroke="#8a5a00" stroke-width="3" stroke-dasharray="6 4"
+            ><line x1="0" y1="4" x2="24" y2="4" stroke="#9b94a6" stroke-width="3" stroke-dasharray="6 4"
           /></svg>
           {{ testi.legendaCampione }}
         </span>

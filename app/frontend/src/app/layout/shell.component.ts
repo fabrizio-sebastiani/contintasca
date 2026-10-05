@@ -55,63 +55,82 @@ import { NOME_APP, menu } from '../testi';
   `,
   styles: [
     `
+      :host {
+        display: block;
+      }
       .intestazione {
-        position: relative;
+        position: sticky;
+        top: 0;
+        z-index: 20;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 12px 24px;
+        padding: 14px 32px;
         background: #fff;
-        border-bottom: 2px solid var(--colore-bordo);
+        box-shadow: var(--ombra-leggera);
       }
       .nome-app {
         font-weight: 700;
         font-size: 22px;
-        color: var(--colore-primario-scuro);
+        color: var(--colore-primario);
+        letter-spacing: -0.01em;
       }
       .pulsante-menu {
         background: none;
         border: 2px solid var(--colore-primario);
-        border-radius: 6px;
-        font-size: 24px;
-        padding: 4px 12px;
+        border-radius: 8px;
+        font-size: 22px;
+        line-height: 1;
+        padding: 8px 14px;
+        color: var(--colore-primario);
         cursor: pointer;
+      }
+      .pulsante-menu:hover {
+        background: var(--colore-primario-hover-sfondo);
       }
       nav {
         position: absolute;
         top: 100%;
-        right: 24px;
+        right: 32px;
+        margin-top: 8px;
         background: #fff;
-        border: 2px solid var(--colore-bordo);
-        border-radius: 6px;
+        border: 1px solid var(--colore-bordo);
+        border-radius: 12px;
+        box-shadow: var(--ombra-morbida);
         z-index: 10;
-        min-width: 200px;
+        min-width: 220px;
+        overflow: hidden;
       }
       nav ul {
         list-style: none;
         margin: 0;
-        padding: 8px 0;
+        padding: 8px;
       }
       nav li a,
       nav li button {
         display: block;
         width: 100%;
         text-align: left;
-        padding: 10px 18px;
+        padding: 12px 16px;
+        border-radius: 8px;
         text-decoration: none;
         color: var(--colore-testo);
         background: none;
         border: none;
-        font-size: 17px;
+        font-size: 16px;
         cursor: pointer;
       }
       nav li a.attivo {
         font-weight: 700;
         color: var(--colore-primario-scuro);
+        background: var(--colore-primario-hover-sfondo);
       }
       nav li a:hover,
       nav li button:hover {
-        background: var(--colore-sfondo);
+        background: var(--colore-primario-hover-sfondo);
+      }
+      main {
+        display: block;
       }
     `,
   ],

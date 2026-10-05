@@ -1,4 +1,4 @@
-# Contratto API – "In tasca mia"
+# Contratto API – "ContiInTasca"
 
 > Versione 1 (Fase 1). Fonte di verità per `dev-backend` e `dev-frontend`. Dopo l'approvazione dell'utente si cambia solo con una nuova approvazione.
 > Requisiti di riferimento: `agents/docs/requisiti-funzionali.md` v2. Formato del file dati: `agents/skills/formato-csv-istat/SKILL.md`.

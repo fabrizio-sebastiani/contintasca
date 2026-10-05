@@ -1,4 +1,4 @@
-# Requisiti funzionali – "In tasca mia"
+# Requisiti funzionali – "ContiInTasca"
 
 > Versione 2 (Fase 0d, dopo la sfida). Fonti: `agents/docs/idea-utente.md` (idea + risposte Fase 0a), `agents/skills/linguaggio-semplice/SKILL.md`, `agents/skills/formato-csv-istat/SKILL.md`, `agents/stato/sfida-requisiti-architetto.md`, `agents/stato/sfida-requisiti-conformita.md`.
 > Tutti gli importi dell'app sono **annuali**. I dati sono **dimostrativi e inventati**.
@@ -38,7 +38,7 @@ Alla fine Marco capisce:
 
 ### Elemento comune: intestazione e menu hamburger
 - **Dove compare**: in cima a S-03, S-04 e S-05. **Non** compare in S-01 e S-02.
-- **Contenuto**: nome dell'app "In tasca mia" e pulsante menu (icona hamburger con etichetta accessibile "Menu").
+- **Contenuto**: nome dell'app "ContiInTasca" e pulsante menu (icona hamburger con etichetta accessibile "Menu").
 - **Voci del menu**, in questo ordine: Profilo (S-04), Analisi di spesa (S-03), Amministrazione (S-05), Esci (torna a S-01 e chiude l'accesso; vedi DA-01).
 - **Azioni**: apre e chiude con clic, tocco, Invio o Spazio; si chiude con Esc o scegliendo una voce. La voce della pagina corrente è evidenziata.
 

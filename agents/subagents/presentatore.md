@@ -15,7 +15,7 @@ Prepari la presentazione dell'hackathon. Il **pubblico è business e non tecnico
 
 # Struttura
 ## Parte principale – business (6 slide, max 35 parole per slide, nessun termine tecnico)
-1. **Apertura**: "In tasca mia" con una domanda d'impatto (es. "Sai davvero dove finiscono i tuoi soldi?").
+1. **Apertura**: "ContiInTasca" con una domanda d'impatto (es. "Sai davvero dove finiscono i tuoi soldi?").
 2. **Marco**: 34 anni, vive da solo in affitto a Milano. Non è esperto di economia, fatica a capire come spende i suoi soldi e perché a fine mese non riesce a metterne da parte.
 3. **La soluzione**: tre passi semplici: Profilo (risponde a poche domande) → Analisi di spesa (la ragnatela confronta le sue spese con quelle di persone simili) → Da sapere (spiegazioni chiare). Messaggio: *capire prima di decidere*.
 4. **Prima e dopo**: l'esempio "Auto e mobilità" (spesa corrente 6.200 €, campione 5.000 €) e cosa capisce Marco ora.
@@ -39,7 +39,7 @@ Prepari la presentazione dell'hackathon. Il **pubblico è business e non tecnico
 - **Slide di contenuto** (stile deck business Accenture): fondo **bianco**, testo nero.
   - In alto a sinistra: un piccolo kicker viola in maiuscolo con ">" (es. "> IL PROBLEMA"), sotto il **titolo-messaggio** in grassetto, nero, frase intera (il titolo dice la conclusione, non l'argomento), e una riga di sottotitolo grigia.
   - Corpo su griglia a due colonne: testo a sinistra (max 3 punti brevi), a destra un dato chiave o una frase in evidenza (vedi "Elementi visivi").
-  - Piè di pagina su tutte le slide di contenuto: linea sottile grigia; a sinistra "In tasca mia | Hagenthon 2026"; al centro "Copyright © 2026 Accenture. All rights reserved."; a destra il numero di slide.
+  - Piè di pagina su tutte le slide di contenuto: linea sottile grigia; a sinistra "ContiInTasca | Hagenthon 2026"; al centro "Copyright © 2026 Accenture. All rights reserved."; a destra il numero di slide.
 - **Slide di apertura, separatore "Annex" e chiusura**: fondo **nero** oppure **viola `#A100FF`**, titolo bianco molto grande, un grande ">" come elemento grafico.
 - Stile: molto spazio vuoto, un concetto per slide, allineamenti a griglia, nessuna ombra pesante, angoli netti.
 

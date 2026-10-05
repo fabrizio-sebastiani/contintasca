@@ -28,6 +28,7 @@ Fase 5a – README (architetto, modalità DOCUMENTAZIONE); presentazione già co
 - I dati ISTAT si caricano manualmente da un caricatore CSV nell'app.
 - Presentazione da preparare entro le 2 ore, **in HTML con brand Accenture** (`presentation/index.html`).
 - Nome dell'app: **"In tasca mia"**. Login e MFA simulati (vedi `agents/docs/idea-utente.md`).
+- Nome dell'app cambiato dall'utente in **"ContiInTasca"** (allineati testi dell'app, documenti, presentazione e script).
 - Consegna: repository GitHub pubblico con `app/`, `agents/`, `presentation/` e `README.md`. Il push lo fa l'utente alla fine.
 - Sezione "Consigli" rinominata in **"Da sapere"**: contenuti educativi statici, nessuna indicazione su cosa fare (vincolo del tema).
 - Le spese di Marco si inseriscono **in fondo al questionario Profilo**, una per dimensione, annuali.

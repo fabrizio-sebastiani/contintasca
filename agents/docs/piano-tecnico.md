@@ -1,4 +1,4 @@
-# Piano tecnico – "In tasca mia"
+# Piano tecnico – "ContiInTasca"
 
 > Versione 1 (Fase 1). Input: `agents/docs/requisiti-funzionali.md` v2 (approvati), `agents/docs/contratto-api.md`, `agents/skills/formato-csv-istat/SKILL.md`.
 > Obiettivo: `dev-backend` e `dev-frontend` lavorano **in parallelo, senza parlarsi**, in circa 30 minuti. Il punto d'incontro è solo il contratto API.

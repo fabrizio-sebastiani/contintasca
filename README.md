@@ -1,4 +1,4 @@
-# In tasca mia
+# ContiInTasca
 
 App web educativa per il tema **02 – Inclusione finanziaria**. Una persona con poca dimestichezza con i numeri confronta le proprie spese annuali con quelle di persone con un profilo simile. Poi legge, in parole semplici, cosa significano le differenze.
 
@@ -170,7 +170,7 @@ Cicli usati: verifica 1 su 3, revisioni 1 su 2. Nessuna contestazione.
 **AI (agenti Claude Code)**: domande e requisiti, sfida ai requisiti, piano tecnico e contratto API, tutto il codice di backend e frontend, i test, le verifiche, le revisioni, questo README e la presentazione. Ogni passaggio è tracciato nei file di `agents/`.
 
 **Revisione e decisioni umane** (registrate in [`agents/stato/avanzamento.md`](agents/stato/avanzamento.md)):
-- **Indirizzo del progetto**: tema 02, agenti che costruiscono l'app (e non vivono dentro l'app), stack Spring Boot + Angular + H2, caricamento manuale del CSV, nome "In tasca mia", login e MFA simulati.
+- **Indirizzo del progetto**: tema 02, agenti che costruiscono l'app (e non vivono dentro l'app), stack Spring Boot + Angular + H2, caricamento manuale del CSV, nome "ContiInTasca", login e MFA simulati.
 - **Vincolo del tema**: la sezione "Consigli" è stata rinominata **"Da sapere"** e contiene solo testi educativi. Le spese si inseriscono in fondo al Profilo.
 - **Fase 0a**: alle 8 domande dell'analista l'utente ha risposto, scegliendo l'opzione consigliata.
 - **Approvazioni formali** (gate STOP): requisiti v2, poi piano tecnico e contratto API.

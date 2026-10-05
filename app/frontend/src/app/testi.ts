@@ -1,10 +1,10 @@
-// Tutti i testi visibili dell'app "In tasca mia".
+// Tutti i testi visibili dell'app "ContiInTasca".
 // Regole: agents/skills/linguaggio-semplice/SKILL.md. Nessun componente scrive frasi nel template:
 // ogni testo visibile viene letto da qui.
 import { ErrorDetail } from './api.models';
 import { riempi } from './format';
 
-export const NOME_APP = 'In tasca mia';
+export const NOME_APP = 'ContiInTasca';
 
 // ---------------------------------------------------------------------------
 // Nomi delle voci di spesa (sezione 1 del contratto, ordine RB-15)

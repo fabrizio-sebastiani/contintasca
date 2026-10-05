@@ -1,7 +1,7 @@
 # Idea dell'utente (parole dell'utente, raccolte dall'orchestratore)
 
 ## Nome
-L'applicazione si chiama **"In tasca mia"**.
+L'applicazione si chiama **"In tasca mia"**. _(Rinominata dall'utente in **"ContiInTasca"**.)_
 
 ## Accesso
 - Pagina di **login con username e password**. Nella demo è **simulata**: accetta qualsiasi valore.

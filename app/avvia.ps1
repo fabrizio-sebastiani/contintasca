@@ -1,5 +1,5 @@
 <#
-  In tasca mia - avvio della demo (backend Spring Boot + frontend Angular).
+  ContiInTasca - avvio della demo (backend Spring Boot + frontend Angular).
 
   Uso (dalla radice del repository):
     powershell -ExecutionPolicy Bypass -File app\avvia.ps1            avvia tutto e apre il browser
@@ -51,13 +51,13 @@ function Wait-Porta([int]$porta, [string]$nome) {
 }
 
 if ($Ferma) {
-    Write-Host 'Fermo In tasca mia...'
+    Write-Host 'Fermo ContiInTasca...'
     Stop-Porta $portaFrontend
     Stop-Porta $portaBackend
     return
 }
 
-Write-Host '== In tasca mia: avvio della demo ==' -ForegroundColor Magenta
+Write-Host '== ContiInTasca: avvio della demo ==' -ForegroundColor Magenta
 
 foreach ($cmd in 'java', 'mvn.cmd', 'node', 'npm.cmd', 'npx.cmd') {
     if (-not (Get-Command $cmd -ErrorAction SilentlyContinue)) { throw "Prerequisito mancante: $cmd non trovato nel PATH." }
@@ -84,8 +84,8 @@ if (-not (Test-Path -LiteralPath (Join-Path $frontendDir 'node_modules'))) {
 # senza questa cartella alternativa Tomcat fallisce con "Unable to establish loopback connection".
 $cartellaSocket = Join-Path $env:USERPROFILE '.itm-tmp'
 New-Item -ItemType Directory -Force -Path $cartellaSocket | Out-Null
-$avvioBackend  = "`$host.UI.RawUI.WindowTitle = 'In tasca mia - backend'; Set-Location -LiteralPath '$backendDir'; mvn.cmd spring-boot:run '-Dspring-boot.run.jvmArguments=-Djdk.net.unixdomain.tmpdir=$cartellaSocket'"
-$avvioFrontend = "`$host.UI.RawUI.WindowTitle = 'In tasca mia - frontend'; Set-Location -LiteralPath '$frontendDir'; npx.cmd ng serve"
+$avvioBackend  = "`$host.UI.RawUI.WindowTitle = 'ContiInTasca - backend'; Set-Location -LiteralPath '$backendDir'; mvn.cmd spring-boot:run '-Dspring-boot.run.jvmArguments=-Djdk.net.unixdomain.tmpdir=$cartellaSocket'"
+$avvioFrontend = "`$host.UI.RawUI.WindowTitle = 'ContiInTasca - frontend'; Set-Location -LiteralPath '$frontendDir'; npx.cmd ng serve"
 
 Write-Host 'Avvio il backend in una nuova finestra...'
 Start-Process powershell -ArgumentList '-NoExit', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-Command', $avvioBackend | Out-Null

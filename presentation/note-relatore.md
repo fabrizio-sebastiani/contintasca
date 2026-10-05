@@ -1,9 +1,9 @@
-# Note per il relatore — "In tasca mia"
+# Note per il relatore — "ContiInTasca"
 
 > Pubblico business, non tecnico. La parte principale (slide 1-6) non usa termini tecnici; l'Annex (slide 8-12, dopo il separatore) è per chi vuole vedere come è stata costruita l'applicazione. Il segnaposto "n.d." nella slide A4 (criteri di accettazione) verrà sostituito quando il tester avrà concluso la verifica.
 
 ## Slide 1 — Apertura
-Iniziamo con una domanda semplice e diretta: sai davvero dove finiscono i tuoi soldi ogni anno? La maggior parte delle persone risponde di no, o risponde a sensazioni più che a numeri. "In tasca mia" nasce per rispondere a questa domanda con fatti, non con sensazioni.
+Iniziamo con una domanda semplice e diretta: sai davvero dove finiscono i tuoi soldi ogni anno? La maggior parte delle persone risponde di no, o risponde a sensazioni più che a numeri. "ContiInTasca" nasce per rispondere a questa domanda con fatti, non con sensazioni.
 
 ## Slide 2 — Marco
 Marco ha 34 anni, vive da solo in affitto a Milano, e non è un esperto di economia — come la maggior parte di noi. Il problema non è che non sappia quanto spende: è che non ha un termine di paragone, e a fine mese fatica a capire perché non riesce a mettere via qualcosa.
@@ -18,7 +18,7 @@ Prendiamo l'esempio dell'auto: prima, Marco vede solo un numero, 6.200 € l'ann
 Questa è una visione per il futuro, non parte della demo di oggi: l'app potrebbe portare Marco verso strumenti pubblici e di mercato dove verificare da solo le proprie condizioni — bollette, polizze, conto corrente. Sono tutte integrazioni dimostrative: la scelta resta sempre sua.
 
 ## Slide 6 — Chiusura
-Il valore per Marco non è un consiglio, è consapevolezza: capire le proprie spese con i propri occhi, e decidere con più informazioni in mano. "In tasca mia" aiuta a capire prima, decidere dopo — e la decisione resta sempre dell'utente.
+Il valore per Marco non è un consiglio, è consapevolezza: capire le proprie spese con i propri occhi, e decidere con più informazioni in mano. "ContiInTasca" aiuta a capire prima, decidere dopo — e la decisione resta sempre dell'utente.
 
 ## Slide 7 — Separatore Annex
 Questa slide introduce la parte più tecnica della presentazione, per chi è curioso di sapere come è stata costruita l'applicazione: un sistema di agenti specializzati, con controlli e approvazioni a ogni passo.

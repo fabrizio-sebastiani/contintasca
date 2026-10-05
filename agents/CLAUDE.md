@@ -1,4 +1,4 @@
-# Hagenthon – "In tasca mia"
+# Hagenthon – "ContiInTasca"
 
 ## Scopo del progetto
 Costruire, tramite una squadra di agenti, un'app web che permette a una persona con bassa alfabetizzazione finanziaria di **confrontare le proprie spese annuali con quelle di persone con un profilo simile secondo dati ispirati a ISTAT** e di **capire in parole semplici** cosa significano le differenze.

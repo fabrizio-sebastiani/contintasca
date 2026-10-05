@@ -142,7 +142,7 @@ import {
         /* Altezza fissa: il riquadro "Dove verificare" non deve far cambiare dimensione al box. */
         .colonna-ragnatela,
         .colonna-box {
-          height: 720px;
+          height: 864px;
           box-sizing: border-box;
         }
         .colonna-sotto {

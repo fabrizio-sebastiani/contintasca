@@ -180,9 +180,9 @@ export const linkVerificaPerVoce: Record<string, LinkVerifica[]> = {
   ],
   UTENZE: [
     {
-      prima: 'Puoi confrontare le offerte di luce e gas sul Portale Offerte di ',
-      testoLink: 'ARERA',
-      dopo: ', un servizio pubblico e gratuito.',
+      prima: 'Sul ',
+      testoLink: 'Portale Offerte di ARERA e Acquirente Unico',
+      dopo: ' puoi confrontare gratis le offerte di luce e gas del mercato libero. Con SPID o CIE puoi confrontarle con i tuoi consumi passati.',
       url: 'https://www.ilportaleofferte.it',
     },
   ],

@@ -217,7 +217,7 @@ Alla fine Marco capisce:
   |---|---|---|
   | Auto e mobilità | "Puoi vedere i prezzi dei carburanti dei distributori vicino a te sull'Osservatorio prezzi carburanti del MIMIT." | https://carburanti.mise.gov.it |
   | Auto e mobilità | "Puoi confrontare il prezzo dell'assicurazione auto obbligatoria (RC auto) sul preventivatore pubblico IVASS." | https://www.preventivass.it |
-  | Utenze | "Puoi confrontare le offerte di luce e gas sul Portale Offerte di ARERA, un servizio pubblico e gratuito." | https://www.ilportaleofferte.it |
+  | Utenze | "Sul Portale Offerte di ARERA e Acquirente Unico puoi confrontare gratis le offerte di luce e gas del mercato libero. Con SPID o CIE puoi confrontarle con i tuoi consumi passati." (testo aggiornato su richiesta dell'utente) | https://www.ilportaleofferte.it |
   | Casa, Sport e tempo libero, Spesa | "Puoi trovare spiegazioni semplici sul bilancio familiare nel portale «L'economia per tutti» della Banca d'Italia." | https://economiapertutti.bancaditalia.it |
   In fondo al riquadro, sempre: "Sono servizi pubblici e gratuiti. La scelta resta tua." Il nome della fonte è il testo del collegamento; il collegamento si apre in una nuova scheda (`target="_blank"`, `rel="noopener noreferrer"`) e lo dichiara a parole ("si apre in una nuova scheda"). Per il totale e per gli esiti "in linea" e "sotto la media" il riquadro non compare. Il riquadro non contiene mai indicazioni su cosa scegliere.
 

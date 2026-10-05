@@ -133,6 +133,62 @@ export const paroleUtili: { termine: string; definizione: string }[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// RB-26 "Dove verificare": solo quando la voce mostrata ha esito SOPRA (incluso
+// "oltre il 10%"), sotto "Da sapere" compare questo riquadro con fonti istituzionali.
+// Ogni frase è divisa in prima/testoLink/dopo cosi' il testo del collegamento e' sempre
+// il nome esatto della fonte (MIMIT, IVASS, ARERA, Banca d'Italia); prima+testoLink+dopo
+// ricostruisce il testo esatto dei requisiti.
+// ---------------------------------------------------------------------------
+export interface LinkVerifica {
+  prima: string;
+  testoLink: string;
+  dopo: string;
+  url: string;
+}
+
+export const doveVerificare = {
+  titolo: 'Dove verificare',
+  chiusura: 'Sono servizi pubblici e gratuiti. La scelta resta tua.',
+  notaNuovaScheda: 'Si apre in una nuova scheda.',
+};
+
+const LINK_BANCA_ITALIA: LinkVerifica = {
+  prima: 'Puoi trovare spiegazioni semplici sul bilancio familiare nel portale «L\'economia per tutti» della ',
+  testoLink: 'Banca d\'Italia',
+  dopo: '.',
+  url: 'https://economiapertutti.bancaditalia.it',
+};
+
+/** Voce (RB-15, più TOTALE che non ha mai il riquadro) → elenco di collegamenti da mostrare. */
+export const linkVerificaPerVoce: Record<string, LinkVerifica[]> = {
+  CASA: [LINK_BANCA_ITALIA],
+  SPORT_TEMPO_LIBERO: [LINK_BANCA_ITALIA],
+  SPESA: [LINK_BANCA_ITALIA],
+  AUTO_MOBILITA: [
+    {
+      prima: 'Puoi vedere i prezzi dei carburanti dei distributori vicino a te sull\'Osservatorio prezzi carburanti del ',
+      testoLink: 'MIMIT',
+      dopo: '.',
+      url: 'https://carburanti.mise.gov.it',
+    },
+    {
+      prima: 'Puoi confrontare il prezzo dell\'assicurazione auto obbligatoria (RC auto) sul preventivatore pubblico ',
+      testoLink: 'IVASS',
+      dopo: '.',
+      url: 'https://www.preventivass.it',
+    },
+  ],
+  UTENZE: [
+    {
+      prima: 'Puoi confrontare le offerte di luce e gas sul Portale Offerte di ',
+      testoLink: 'ARERA',
+      dopo: ', un servizio pubblico e gratuito.',
+      url: 'https://www.ilportaleofferte.it',
+    },
+  ],
+};
+
+// ---------------------------------------------------------------------------
 // RB-17 tabella A: "cosa include" per voce
 // ---------------------------------------------------------------------------
 export const tabellaA: Record<string, string> = {

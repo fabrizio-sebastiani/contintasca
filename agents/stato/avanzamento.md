@@ -34,6 +34,8 @@ Fase 5a – README (architetto, modalità DOCUMENTAZIONE); presentazione già co
 - Le spese di Marco si inseriscono **in fondo al questionario Profilo**, una per dimensione, annuali.
 - **Requisiti v2 approvati.** Sesso: M / F / "Preferisco non rispondere" (score 0) con spiegazione. Voce "Esci" nel menu: inclusa. Fonte con anno: "…delle famiglie, anno 2024." (l'utente ha scelto diversamente dal consiglio dell'analista).
 - **Presentazione**: pubblico business non tecnico; parte principale business (6 slide) + sezione "Annex" con la struttura agentica. Connessioni dimostrative: ARERA, IVASS + Facile.it/Segugio.it (al posto di Subito.it, che è un sito di annunci), Open Banking, Banca d'Italia, App IO/pagoPA, MIMIT, SosTariffe.
+- **Fonti istituzionali**: aggiunta RB-26 "Dove verificare" (rimando neutro a MIMIT, IVASS, ARERA, Banca d'Italia per le voci sopra la media); scartata l'opzione "azioni correttive" esplicite.
+- **Presentazione affidata a un collega dell'utente**: da ora `presentation/` non va più modificata né dal `presentatore` né dall'orchestratore. Fase 5b chiusa lato agenti.
 
 ## Cicli di correzione usati
 | Fase | Cicli usati | Limite |
@@ -102,3 +104,5 @@ Progetto Angular standalone creato in `app/frontend/` (F-01…F-10 completati). 
 **Non verificato con backend reale** (il backend non era ancora avviabile durante lo sviluppo): solo `ng build` è stato eseguito, come richiesto. Nessun calcolo di business nel frontend: tutti i valori mostrati arrivano dal backend.
 
 **Fase 4 – Revisione conformità, ciclo 1**: RC-01 e RC-02 corretti in `testi.ts` (`profilo.riepilogoErrori` con singolare/plurale; `profilo.aiutoImporto` reso più sintetico). RC-03 corretto: testo "Profilo" spostato da `profile-page.component.ts` a `testi.ts` (`profilo.titoloMenuProfilo`). `npx ng build` verde dopo le correzioni. Nessuna contestazione.
+
+**RB-26 "Dove verificare"** (modifica approvata dopo la consegna iniziale): aggiunto in `testi.ts` (`doveVerificare`, `linkVerificaPerVoce`, tipo `LinkVerifica`) e in `pages/analysis/analysis-page.component.ts`. Il riquadro compare nel box di S-03 sotto "Da sapere" solo quando la voce mostrata (mai il totale) ha esito `SOPRA`; collegamenti MIMIT/IVASS (Auto e mobilità), ARERA (Utenze), Banca d'Italia (Casa, Sport e tempo libero, Spesa) con `target="_blank" rel="noopener noreferrer"` e dichiarazione a parole "Si apre in una nuova scheda."; chiusura fissa "Sono servizi pubblici e gratuiti. La scelta resta tua." Nome app aggiornato a "ContiInTasca" (già presente in `testi.ts`). `npx ng build` verde.

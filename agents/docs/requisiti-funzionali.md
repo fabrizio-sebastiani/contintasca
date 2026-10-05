@@ -212,6 +212,14 @@ Alla fine Marco capisce:
   - **profilo salvato ma non più completo** (dopo un nuovo caricamento: domanda nuova, opzione o valore non più ammesso): ogni volta che S-04 si apre (dopo l'accesso, dal menu o perché si è aperto S-03) mostra l'avviso "Le domande del profilo sono cambiate. Controlla le tue risposte." con i campi ancora validi già compilati;
   - **nessun profilo salvato**: dopo l'accesso o dal menu S-04 si apre vuota senza avviso; se si apre S-03, si va a S-04 con l'avviso "Per vedere l'analisi di spesa compila prima il tuo profilo.".
 - **RB-25 – Nessun dato caricato**: S-04 e S-03 mostrano "Non ci sono ancora dati per il confronto. Puoi caricarli dalla pagina Amministrazione." con un collegamento a S-05; il questionario non compare.
+- **RB-26 – Dove verificare** _(aggiunta dopo l'approvazione, su decisione dell'utente)_: nel box di S-03, **solo** quando la voce mostrata ha esito "sopra la media" (comprese le frasi "oltre il 10%"), sotto "Da sapere" compare il riquadro **"Dove verificare"** con i rimandi a fonti istituzionali, testo esatto:
+  | Voce | Frase | Collegamento |
+  |---|---|---|
+  | Auto e mobilità | "Puoi vedere i prezzi dei carburanti dei distributori vicino a te sull'Osservatorio prezzi carburanti del MIMIT." | https://carburanti.mise.gov.it |
+  | Auto e mobilità | "Puoi confrontare il prezzo dell'assicurazione auto obbligatoria (RC auto) sul preventivatore pubblico IVASS." | https://www.preventivass.it |
+  | Utenze | "Puoi confrontare le offerte di luce e gas sul Portale Offerte di ARERA, un servizio pubblico e gratuito." | https://www.ilportaleofferte.it |
+  | Casa, Sport e tempo libero, Spesa | "Puoi trovare spiegazioni semplici sul bilancio familiare nel portale «L'economia per tutti» della Banca d'Italia." | https://economiapertutti.bancaditalia.it |
+  In fondo al riquadro, sempre: "Sono servizi pubblici e gratuiti. La scelta resta tua." Il nome della fonte è il testo del collegamento; il collegamento si apre in una nuova scheda (`target="_blank"`, `rel="noopener noreferrer"`) e lo dichiara a parole ("si apre in una nuova scheda"). Per il totale e per gli esiti "in linea" e "sotto la media" il riquadro non compare. Il riquadro non contiene mai indicazioni su cosa scegliere.
 
 ## 6. Criteri di accettazione
 

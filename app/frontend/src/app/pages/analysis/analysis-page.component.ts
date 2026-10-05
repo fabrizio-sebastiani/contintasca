@@ -17,6 +17,9 @@ import {
   rigaRisposta,
   paroleUtili,
   erroreGenerico,
+  doveVerificare,
+  linkVerificaPerVoce,
+  LinkVerifica,
 } from '../../testi';
 
 @Component({
@@ -51,6 +54,25 @@ import {
             <li>{{ fraseB() }}</li>
             <li>{{ fraseC() }}</li>
           </ul>
+
+          @if (mostraDoveVerificare()) {
+            <section class="avviso-demo" aria-label="{{ testi2.titolo }}">
+              <h2>{{ testi2.titolo }}</h2>
+              <ul>
+                @for (link of linkVerifica(); track link.url) {
+                  <li>
+                    {{ link.prima }}<a [href]="link.url" target="_blank" rel="noopener noreferrer">{{
+                      link.testoLink
+                    }}</a
+                    >{{ link.dopo }}
+                    <span class="aiuto">{{ testi2.notaNuovaScheda }}</span>
+                  </li>
+                }
+              </ul>
+              <p>{{ testi2.chiusura }}</p>
+            </section>
+          }
+
           <button type="button" class="btn-secondario" (click)="vediTotali()">
             {{ testi.pulsanteVediTotali }}
           </button>
@@ -103,6 +125,7 @@ import {
 })
 export class AnalysisPageComponent implements OnInit {
   protected readonly testi = analisi;
+  protected readonly testi2 = doveVerificare;
   protected readonly paroleUtili = paroleUtili;
   protected readonly nessunDato = signal(false);
   protected readonly erroreGenerale = signal<string | null>(null);
@@ -214,5 +237,19 @@ export class AnalysisPageComponent implements OnInit {
 
   protected euroFmt(valore: number): string {
     return euro(valore);
+  }
+
+  // RB-26: il riquadro "Dove verificare" compare solo per una voce (mai per il totale)
+  // con esito SOPRA la media (comprese le frasi "oltre il 10%" e "campione 0").
+  protected mostraDoveVerificare(): boolean {
+    if (this.voceMostrata() === 'TOTALE') {
+      return false;
+    }
+    const v = this.voceCorrente();
+    return v?.esito === 'SOPRA';
+  }
+
+  protected linkVerifica(): LinkVerifica[] {
+    return linkVerificaPerVoce[this.voceMostrata()] ?? [];
   }
 }

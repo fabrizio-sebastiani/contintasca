@@ -61,6 +61,9 @@ L'applicazione si chiama **"In tasca mia"**. _(Rinominata dall'utente in **"Cont
 ## Menu hamburger (in cima alla pagina)
 Voci: **Profilo**, **Analisi di spesa**, **Amministrazione**.
 
+## Fonti istituzionali ("Dove verificare")
+- Nella sezione dei suggerimenti l'app rimanda a **fonti istituzionali**: MIMIT Osservaprezzi carburanti, IVASS Preventivass, ARERA Portale Offerte, Banca d'Italia "L'economia per tutti". _(Decisione dell'utente: rimando neutro "Dove verificare", senza azioni correttive esplicite, per rispettare il vincolo del tema. Integrazioni automatiche dei dati e consigli generati da AI restano sviluppi futuri.)_
+
 ## Altro
 _(in raccolta)_
 

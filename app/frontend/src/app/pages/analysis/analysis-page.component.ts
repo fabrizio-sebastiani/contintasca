@@ -35,7 +35,8 @@ import {
       </div>
     } @else if (dati()) {
       <div class="contenitore layout-analisi">
-        <section class="colonna-ragnatela card">
+        <section class="colonna-ragnatela card" aria-labelledby="titolo-ragnatela">
+          <h2 id="titolo-ragnatela" class="titolo-ragnatela">{{ testi.titoloRagnatela }}</h2>
           <app-radar-chart
             [voci]="dati()!.voci"
             [scalaMassima]="dati()!.scalaMassima"
@@ -123,13 +124,18 @@ import {
       }
       .colonna-ragnatela {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+      }
+      .titolo-ragnatela {
+        align-self: stretch;
+        margin: 0 0 16px;
       }
       .colonna-ragnatela app-radar-chart {
         width: 100%;
         max-width: 460px;
-        margin: 0 auto;
+        margin: auto;
       }
       .colonna-box {
         overflow-y: auto;

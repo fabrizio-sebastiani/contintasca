@@ -81,6 +81,7 @@ export const menu = {
 // S-03 Analisi di spesa
 // ---------------------------------------------------------------------------
 export const analisi = {
+  titoloRagnatela: 'La tua situazione',
   titoloTotale: 'Totale',
   etichettaSpesaCorrente: 'Spesa corrente',
   etichettaSpesaCampione: 'Spesa campione',

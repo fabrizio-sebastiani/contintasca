@@ -281,6 +281,8 @@ export const tabellaC: Record<string, Record<'SOPRA' | 'IN_LINEA' | 'SOTTO', str
 // ---------------------------------------------------------------------------
 export const profilo = {
   titoloMenuProfilo: 'Profilo',
+  pulsanteEstrattoConto: 'Upload estratto conto',
+  avvisoEstrattoConto: 'Funzione dimostrativa: in futuro potrai importare i dati del profilo dal tuo estratto conto.',
   titoloParteA: 'Le tue informazioni',
   titoloParteB: 'Quanto spendi in un anno',
   aiutoImporto: 'Scrivi solo cifre. Esempio: 12000.',

@@ -81,3 +81,6 @@ Ipotesi dell'analista accettate per silenzio: pagina Amministrazione accessibile
 
 ## Pagina iniziale
 - Dopo l'accesso (login + MFA) si va **sempre alla pagina Profilo**, anche se il profilo e' gia' compilato. _(Decisione dell'utente; sostituisce la regola "profilo completo -> Analisi di spesa".)_
+
+## Pagina Profilo: "Upload estratto conto"
+- Nel box del Profilo c'e' il pulsante **"Upload estratto conto"**. Per ora e' **dimostrativo**: mostra un avviso; in futuro permettera' di importare i dati del profilo da un estratto conto bancario. _(Richiesta dell'utente.)_

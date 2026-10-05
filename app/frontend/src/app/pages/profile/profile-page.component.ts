@@ -19,6 +19,15 @@ import { nomeVoce, tabellaA, profilo, erroreProfiloCampo, erroreGenerico } from 
        <div class="card">
         <h1>{{ testi.titoloMenuProfilo }}</h1>
 
+        <p>
+          <button type="button" class="btn-secondario" (click)="mostraAvvisoEstrattoConto.set(true)">
+            {{ testi.pulsanteEstrattoConto }}
+          </button>
+        </p>
+        @if (mostraAvvisoEstrattoConto()) {
+          <p class="avviso" role="status">{{ testi.avvisoEstrattoConto }}</p>
+        }
+
         @if (avvisoNonPiuCompleto()) {
           <p class="avviso" role="alert">{{ testi.avvisoNonPiuCompleto }}</p>
         }
@@ -114,6 +123,7 @@ import { nomeVoce, tabellaA, profilo, erroreProfiloCampo, erroreGenerico } from 
 export class ProfilePageComponent implements OnInit {
   protected readonly testi = profilo;
   protected readonly nessunDato = signal(false);
+  protected readonly mostraAvvisoEstrattoConto = signal(false);
   protected readonly pronto = signal(false);
   protected readonly inCorso = signal(false);
   protected readonly domande = signal<Domanda[]>([]);

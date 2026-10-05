@@ -1,0 +1,80 @@
+tipo_riga;domanda;tipo_risposta;etichetta;testo;spiegazione;opzione;minimo;massimo;punteggio;fascia;voce;importo
+DOMANDA;PROVINCIA;SCELTA;Provincia;In quale provincia vivi?;;;;;;;;
+OPZIONE;PROVINCIA;;;Milano;;MI;;;3;;;
+OPZIONE;PROVINCIA;;;Roma;;RM;;;3;;;
+OPZIONE;PROVINCIA;;;Torino;;TO;;;2;;;
+OPZIONE;PROVINCIA;;;Bologna;;BO;;;2;;;
+OPZIONE;PROVINCIA;;;Firenze;;FI;;;2;;;
+OPZIONE;PROVINCIA;;;Napoli;;NA;;;1;;;
+OPZIONE;PROVINCIA;;;Palermo;;PA;;;1;;;
+OPZIONE;PROVINCIA;;;Altra provincia;;ALTRA;;;1;;;
+DOMANDA;ETA;NUMERO;Età;Quanti anni hai?;;;;;;;;
+FASCIA_RISPOSTA;ETA;;;;;;18;35;1;;;
+FASCIA_RISPOSTA;ETA;;;;;;36;50;2;;;
+FASCIA_RISPOSTA;ETA;;;;;;51;65;2;;;
+FASCIA_RISPOSTA;ETA;;;;;;66;99;1;;;
+DOMANDA;ABITAZIONE;SCELTA;Dove vivi;Vivi in una casa di proprietà o in affitto?;;;;;;;;
+OPZIONE;ABITAZIONE;;;Appartamento di proprietà;;PROPRIETA;;;1;;;
+OPZIONE;ABITAZIONE;;;Affitto;;AFFITTO;;;3;;;
+DOMANDA;SESSO;SCELTA;Sesso;Qual è il tuo sesso?;Serve solo a trovare il tuo gruppo nei dati. Non è un giudizio su di te.;;;;;;;
+OPZIONE;SESSO;;;M;;M;;;1;;;
+OPZIONE;SESSO;;;F;;F;;;1;;;
+OPZIONE;SESSO;;;Preferisco non rispondere;;NR;;;0;;;
+DOMANDA;REDDITO;NUMERO;Reddito lordo annuo;Qual è il tuo reddito lordo annuo, in euro?;Quello che guadagni in un anno, prima di tasse e contributi.;;;;;;;
+FASCIA_RISPOSTA;REDDITO;;;;;;0;15000;1;;;
+FASCIA_RISPOSTA;REDDITO;;;;;;15001;35000;2;;;
+FASCIA_RISPOSTA;REDDITO;;;;;;35001;60000;3;;;
+FASCIA_RISPOSTA;REDDITO;;;;;;60001;200000;4;;;
+DOMANDA;SPORT;SCELTA;Fai sport;Fai sport?;;;;;;;;
+OPZIONE;SPORT;;;Sì;;SI;;;2;;;
+OPZIONE;SPORT;;;No;;NO;;;1;;;
+DOMANDA;AUTOVETTURE;NUMERO;Numero di autovetture;Quante automobili ci sono nella tua famiglia?;Scrivi 0 se nella tua famiglia non ci sono automobili.;;;;;;;
+FASCIA_RISPOSTA;AUTOVETTURE;;;;;;0;0;0;;;
+FASCIA_RISPOSTA;AUTOVETTURE;;;;;;1;1;2;;;
+FASCIA_RISPOSTA;AUTOVETTURE;;;;;;2;5;4;;;
+DOMANDA;CICLOMOTORI;NUMERO;Numero di ciclomotori;Quanti ciclomotori o scooter ci sono nella tua famiglia?;Scrivi 0 se nella tua famiglia non ci sono ciclomotori.;;;;;;;
+FASCIA_RISPOSTA;CICLOMOTORI;;;;;;0;0;0;;;
+FASCIA_RISPOSTA;CICLOMOTORI;;;;;;1;1;1;;;
+FASCIA_RISPOSTA;CICLOMOTORI;;;;;;2;5;2;;;
+DOMANDA;NUCLEO;NUMERO;Membri del nucleo familiare;Quante persone vivono nella tua casa, tu compreso?;Conta tutte le persone che vivono nella tua casa, anche te.;;;;;;;
+FASCIA_RISPOSTA;NUCLEO;;;;;;1;1;1;;;
+FASCIA_RISPOSTA;NUCLEO;;;;;;2;2;2;;;
+FASCIA_RISPOSTA;NUCLEO;;;;;;3;4;3;;;
+FASCIA_RISPOSTA;NUCLEO;;;;;;5;10;4;;;
+FASCIA_PUNTEGGIO;;;;;;;6;10;;F1;;
+FASCIA_PUNTEGGIO;;;;;;;11;13;;F2;;
+FASCIA_PUNTEGGIO;;;;;;;14;18;;F3;;
+FASCIA_PUNTEGGIO;;;;;;;23;25;;F4;;
+SPESA;;;;;;;;;;F1;CASA;7000
+SPESA;;;;;;;;;;F1;SPORT_TEMPO_LIBERO;1500
+SPESA;;;;;;;;;;F1;AUTO_MOBILITA;2000
+SPESA;;;;;;;;;;F1;UTENZE;3500
+SPESA;;;;;;;;;;F1;SPESA;5500
+SPESA;;;;;;;;;;F2;CASA;9500
+SPESA;;;;;;;;;;F2;SPORT_TEMPO_LIBERO;2200
+SPESA;;;;;;;;;;F2;AUTO_MOBILITA;3500
+SPESA;;;;;;;;;;F2;UTENZE;4200,50
+SPESA;;;;;;;;;;F2;SPESA;6800
+SPESA;;;;;;;;;;F3;CASA;12000
+SPESA;;;;;;;;;;F3;SPORT_TEMPO_LIBERO;3000
+SPESA;;;;;;;;;;F3;AUTO_MOBILITA;5000
+SPESA;;;;;;;;;;F3;UTENZE;5000
+SPESA;;;;;;;;;;F3;SPESA;8000
+SPESA;;;;;;;;;;F4;CASA;9000
+SPESA;;;;;;;;;;F4;SPORT_TEMPO_LIBERO;2500
+SPESA;;;;;;;;;;F4;AUTO_MOBILITA;7500
+SPESA;;;;;;;;;;F4;Utenze;6500
+SPESA;;;;;;;;;;F4;SPESA;11000
+DOMANDA;TITOLO_STUDIO;SCELTA;Titolo di studio;;;;;;;;;
+OPZIONE;TITOLO_STUDIO;;;Laurea;;LAUREA;;;2;;;
+FASCIA_RISPOSTA;ETA;;;;;;30;40;2;;;
+FASCIA_RISPOSTA;AUTOVETTURE;;;;;;6;9;due;;;
+SPESA;;;;;;;;;;F3;VACANZE;1500
+NOTA;Dati inventati per la demo;;;;;;;;;;;
+SPESA;F3;CASA;12000
+FASCIA_PUNTEGGIO;;;;;;;26;30;;F5;;
+SPESA;;;;;;;;;;F5;CASA;-300
+SPESA;;;;;;;;;;F5;SPORT_TEMPO_LIBERO;2000
+SPESA;;;;;;;;;;F5;AUTO_MOBILITA;8000
+SPESA;;;;;;;;;;F5;UTENZE;7000
+SPESA;;;;;;;;;;F5;SPESA;12000

@@ -1,0 +1,14 @@
+.env
+.env.*
+**/secrets/
+app/backend/target/
+app/backend/data/
+app/frontend/node_modules/
+app/frontend/dist/
+app/frontend/.angular/
+agents/stato/tmp/
+.claude/settings.local.json
+# collegamenti creati da agents/setup.ps1: la fonte e' agents/
+.claude/agents
+.claude/skills
+.claude/commands

@@ -1,0 +1,180 @@
+/* Stile di base - "In tasca mia". Calmo, leggibile, un passo alla volta. */
+
+:root {
+  --colore-testo: #1b2430;
+  --colore-sfondo: #f7f8fa;
+  --colore-primario: #0b5fa5;
+  --colore-primario-scuro: #073e6e;
+  --colore-bordo: #c7cdd6;
+  --colore-errore: #b3261e;
+  --colore-errore-sfondo: #fbeceb;
+  --colore-ok: #1e6b3c;
+  --colore-avviso-sfondo: #fff4d6;
+  --colore-avviso-bordo: #caa200;
+  --focus-outline: 3px solid #0b5fa5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--colore-testo);
+  background: var(--colore-sfondo);
+}
+
+h1, h2, h3 {
+  line-height: 1.3;
+}
+
+a {
+  color: var(--colore-primario-scuro);
+}
+
+button, input, select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+.btn-principale {
+  background: var(--colore-primario);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-principale:hover {
+  background: var(--colore-primario-scuro);
+}
+
+.btn-principale:disabled {
+  background: #9aa5b1;
+  cursor: not-allowed;
+}
+
+.btn-secondario {
+  background: #fff;
+  color: var(--colore-primario-scuro);
+  border: 2px solid var(--colore-primario);
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.campo {
+  margin-bottom: 20px;
+}
+
+.campo label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.campo input[type="text"],
+.campo input[type="password"],
+.campo select {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px;
+  border: 2px solid var(--colore-bordo);
+  border-radius: 6px;
+  font-size: 18px;
+}
+
+.campo input[aria-invalid="true"],
+.campo select[aria-invalid="true"] {
+  border-color: var(--colore-errore);
+}
+
+.aiuto {
+  font-size: 15px;
+  color: #4a5567;
+  margin-top: 4px;
+}
+
+.messaggio-errore {
+  color: var(--colore-errore);
+  font-size: 15px;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.riepilogo-errori {
+  background: var(--colore-errore-sfondo);
+  border: 2px solid var(--colore-errore);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.avviso {
+  background: var(--colore-avviso-sfondo);
+  border: 2px solid var(--colore-avviso-bordo);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+}
+
+.avviso-demo {
+  background: #e6f0fa;
+  border: 2px solid var(--colore-primario);
+  border-radius: 6px;
+  padding: 12px 18px;
+  margin-bottom: 20px;
+}
+
+.contenitore {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.radio-opzioni {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radio-opzioni label {
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--colore-bordo);
+}
+
+.disclaimer {
+  font-size: 14px;
+  color: #4a5567;
+  margin-top: 24px;
+}

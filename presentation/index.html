@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>"In tasca mia" — Hackathon</title>
+<!--
+  CHIAVI (segnaposto data-chiave ancora aperti, in attesa del tester):
+  CA_PASS, CA_FAIL
+
+  Dati già noti e inseriti direttamente nel testo (non più segnaposto):
+  test backend 35/35 OK; build frontend verde ("ng build");
+  cicli fase 3 usati 0/3, fase 4 usati 1/2;
+  revisione conformità testi ciclo 1: 47 OK, 2 MODIFICA, 0 BLOCCA, 1 TESTO_FUORI_FILE, tutti corretti, 0 contestazioni;
+  revisione sicurezza e qualità ciclo 1: 0 BLOCCANTE, 0 ALTA, 1 MEDIA (SQ-01, dipendenza h2console non prevista
+  dal piano tecnico - console comunque disattivata, limite noto), 0 BASSA
+  (fonti: agents/stato/avanzamento.md, agents/stato/revisione-conformita.md, agents/stato/revisione-sicurezza-qualita.md).
+
+  NOTA: su richiesta dell'utente, nessuna illustrazione/disegno/icona decorativa nel deck.
+  Unico elemento grafico: il diagramma di flusso (riquadri e frecce) nella slide A1.
+-->
+<style>
+  @font-face {
+    font-family: "Graphik";
+    src: local("Graphik");
+    font-weight: normal;
+  }
+  :root{
+    --viola: #A100FF;
+    --viola-supp: #7500C0;
+    --viola-scuro: #460073;
+    --viola-chiaro: #BE82FF;
+    --viola-pallido: #E6DCFF;
+    --nero: #000000;
+    --bianco: #FFFFFF;
+    --grigio-testo: #5A5A5A;
+    --grigio-linea: #D9D9D9;
+    --font: "Graphik", Arial, Helvetica, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0; padding:0; height:100%; width:100%;
+    background:var(--nero);
+    font-family:var(--font);
+    overflow:hidden;
+  }
+  .deck{ position:relative; width:100vw; height:100vh; }
+
+  .slide{
+    position:absolute; inset:0;
+    display:none;
+    flex-direction:column;
+    aspect-ratio:16/9;
+    margin:auto;
+  }
+  .slide.active{display:flex;}
+
+  /* ---------- Slide scure: apertura / separatore / chiusura ---------- */
+  .slide.scena{
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:var(--bianco);
+    padding:6vh 8vw;
+    position:relative;
+  }
+  .slide.scena.nero{ background:var(--nero); }
+  .slide.scena.viola{ background:var(--viola); }
+  .scena .segno-enorme{
+    position:absolute;
+    font-size:18rem;
+    font-weight:900;
+    opacity:0.14;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    line-height:1;
+  }
+  .scena h1{
+    font-size:3.6rem;
+    font-weight:800;
+    margin:0 0 0.6rem 0;
+    position:relative;
+    z-index:2;
+  }
+  .scena .messaggio{
+    font-size:1.7rem;
+    font-weight:300;
+    max-width:24ch;
+    color:var(--viola-pallido);
+    position:relative;
+    z-index:2;
+  }
+  .scena.viola .messaggio{ color:var(--bianco); }
+  .scena .kicker-scena{
+    color:var(--viola-chiaro);
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    font-size:1.05rem;
+    margin-bottom:1rem;
+    position:relative; z-index:2;
+  }
+  .scena.viola .kicker-scena{ color:var(--viola-pallido); }
+
+  /* ---------- Slide di contenuto: layout business ---------- */
+  .slide.content{
+    background:var(--bianco);
+    color:var(--nero);
+    padding:5.2vh 6vw 0 6vw;
+    justify-content:flex-start;
+  }
+  .kicker{
+    display:flex; align-items:center; gap:0.4rem;
+    color:var(--viola);
+    font-weight:700;
+    font-size:1rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    margin-bottom:0.9rem;
+  }
+  .kicker .segno{ font-size:1.25rem; font-weight:900; }
+
+  h1.titolo-messaggio{
+    font-size:2.35rem;
+    font-weight:800;
+    margin:0 0 0.5rem 0;
+    line-height:1.15;
+    max-width:22ch;
+    color:var(--nero);
+  }
+  .sottotitolo{
+    font-size:1.05rem;
+    font-weight:400;
+    color:var(--grigio-testo);
+    margin:0 0 1.6rem 0;
+    max-width:60ch;
+  }
+
+  .griglia-contenuto{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:2.5rem;
+    align-items:center;
+    flex:1;
+    min-height:0;
+  }
+  .griglia-contenuto.piena{ grid-template-columns: 1fr; }
+
+  .colonna-testo{ font-size:1.12rem; line-height:1.5; }
+  .colonna-testo ul{ margin:0; padding-left:1.2em; }
+  .colonna-testo li{ margin-bottom:0.65em; }
+  .colonna-testo li::marker{ color:var(--viola); font-weight:900; }
+
+  .colonna-evidenza{
+    display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
+    gap:1.1rem;
+  }
+
+  .numeri-grandi{ display:flex; gap:1.8rem; flex-wrap:wrap; }
+  .numero-blocco .numero{ font-size:2.6rem; font-weight:800; color:var(--viola); line-height:1; }
+  .numero-blocco .didascalia{ font-size:0.9rem; color:var(--grigio-testo); max-width:16ch; }
+
+  .blocco-colore{
+    background:var(--viola);
+    color:var(--bianco);
+    padding:1.1rem 1.4rem;
+    font-size:1.25rem;
+    font-weight:700;
+    line-height:1.35;
+    max-width:30ch;
+  }
+  .blocco-colore .segno-blocco{ font-size:1.6rem; font-weight:900; margin-right:0.3rem; }
+
+  .frase-evidenza{
+    font-size:1.6rem;
+    font-weight:800;
+    color:var(--viola);
+    line-height:1.25;
+    max-width:18ch;
+  }
+  .frase-evidenza .segno{ font-size:1.8rem; }
+
+  .nota-demo{
+    display:inline-block;
+    border:2px dashed var(--viola);
+    color:var(--viola-supp);
+    padding:0.4rem 0.9rem;
+    font-size:0.95rem;
+    font-weight:700;
+    margin-top:0.8rem;
+  }
+
+  .dato{
+    color:var(--viola-supp);
+    font-weight:700;
+    border-bottom:2px dotted var(--viola);
+    padding:0 0.15em;
+  }
+
+  .mini{ font-size:0.95rem; line-height:1.5; }
+
+  table.griglia{ border-collapse:collapse; font-size:0.9rem; margin-top:0.3rem; width:100%; }
+  table.griglia td, table.griglia th{
+    border:1px solid var(--grigio-linea);
+    padding:0.3rem 0.55rem;
+    text-align:left;
+  }
+  table.griglia th{ color:var(--viola-supp); font-weight:700; }
+
+  .estratto{
+    background:#F4F0FA;
+    border-left:4px solid var(--viola);
+    padding:0.7rem 0.9rem;
+    font-family: "Courier New", monospace;
+    font-size:0.78rem;
+    line-height:1.4;
+    color:var(--viola-scuro);
+    white-space:pre-wrap;
+    margin-top:0.7rem;
+  }
+
+  /* Diagramma di flusso — unico elemento grafico ammesso (slide A1) */
+  .flow{
+    display:flex; flex-direction:column; gap:0.5rem;
+    font-size:0.82rem;
+  }
+  .flow .riga{ display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+  .flow .fase-box{
+    background:var(--bianco);
+    border:2px solid var(--viola);
+    color:var(--viola-scuro);
+    padding:0.3rem 0.7rem;
+    border-radius:4px;
+    font-weight:700;
+    min-width:8rem;
+    text-align:center;
+  }
+  .flow .agente-box{
+    background:transparent;
+    border:1px solid var(--grigio-linea);
+    color:var(--grigio-testo);
+    padding:0.28rem 0.6rem;
+    border-radius:4px;
+    font-size:0.78rem;
+  }
+  .flow .freccia{ color:var(--viola); font-size:1.1rem; font-weight:900; }
+  .flow .stop-badge{
+    background:var(--viola);
+    color:var(--bianco);
+    font-size:0.68rem;
+    font-weight:800;
+    padding:0.16rem 0.5rem;
+    border-radius:3px;
+    letter-spacing:0.03em;
+  }
+  .flow .ciclo-badge{
+    border:1px dashed var(--viola-supp);
+    color:var(--viola-supp);
+    font-size:0.68rem;
+    padding:0.16rem 0.45rem;
+    border-radius:3px;
+  }
+
+  /* Piè di pagina business */
+  .footer-business{
+    border-top:1px solid var(--grigio-linea);
+    margin-top:1rem;
+    padding:0.6rem 0 1.3rem 0;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:0.72rem; color:var(--grigio-testo);
+    flex-shrink:0;
+  }
+
+  /* Indicatore di pagina fluttuante (solo slide scure) */
+  .pagina-flottante{
+    position:fixed; bottom:1.2vh; right:1.6vw;
+    font-size:0.9rem; color:var(--viola-chiaro);
+    font-weight:700; letter-spacing:0.05em;
+    z-index:30;
+  }
+  .pagina-flottante.nascosta{ display:none; }
+
+  /* Navigazione */
+  .nav-btn{
+    position:fixed; top:50%; transform:translateY(-50%);
+    background:rgba(161,0,255,0.12);
+    border:2px solid var(--viola);
+    color:var(--viola);
+    font-size:1.5rem;
+    width:2.8rem; height:2.8rem;
+    border-radius:50%;
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    z-index:40;
+    user-select:none;
+  }
+  .nav-btn:hover{ background:var(--viola); color:var(--bianco); }
+  #prev{ left:1.2vw; }
+  #next{ right:1.2vw; }
+
+  @media print{
+    html,body{ overflow:visible; height:auto; }
+    .nav-btn, .pagina-flottante{ display:none !important; }
+    .deck{ height:auto; }
+    .slide{
+      display:flex !important;
+      position:relative;
+      page-break-after:always;
+      height:100vh;
+      width:100%;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- ============================================================= -->
+  <!-- SLIDE 1 — APERTURA (scura)                                     -->
+  <!-- ============================================================= -->
+  <section class="slide scena nero active">
+    <div class="segno-enorme">&gt;</div>
+    <div class="kicker-scena">In tasca mia</div>
+    <h1>In tasca mia</h1>
+    <div class="messaggio">Sai davvero dove finiscono i tuoi soldi ogni anno?</div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- SLIDE 2 — MARCO (business)                                     -->
+  <!-- ============================================================= -->
+  <section class="slide content">
+    <div class="kicker"><span class="segno">&gt;</span> IL PROBLEMA</div>
+    <h1 class="titolo-messaggio">Marco non sa se le sue spese sono normali.</h1>
+    <div class="sottotitolo">34 anni, vive da solo in affitto a Milano. Non è esperto di economia.</div>
+    <div class="griglia-contenuto">
+      <div class="colonna-testo">
+        <ul>
+          <li>Sa quanto spende, ma non ha un termine di paragone.</li>
+          <li>Fatica a capire perché, a fine mese, non riesce a mettere via qualcosa.</li>
+          <li>Le tabelle ufficiali sono tecniche e non parlano di lui.</li>
+        </ul>
+      </div>
+      <div class="colonna-evidenza">
+        <img src="img/marco.png" alt="Marco, confuso, alla scrivania tra bollette, scontrini e conti: si chiede dove sia finito il suo stipendio." style="display:block;width:100%;max-height:62vh;object-fit:contain;border-radius:4px;">
+      </div>
+    </div>
+    <div class="footer-business">
+      <span>In tasca mia | Hagenthon 2026</span>
+      <span>Copyright &copy; 2026 Accenture. All rights reserved.</span>
+      <span>2 / 12</span>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- SLIDE 3 — LA SOLUZIONE (business)                              -->
+  <!-- ============================================================= -->
+  <section class="slide content">
+    <div class="kicker"><span class="segno">&gt;</span> LA SOLUZIONE</div>
+    <h1 class="titolo-messaggio">Capire prima di decidere, in tre passi.</h1>
+    <div class="sottotitolo">Profilo, confronto e spiegazioni chiare: mai un consiglio su cosa fare.</div>
+    <div class="griglia-contenuto">
+      <div class="colonna-testo">
+        <ul>
+          <li><strong>Profilo</strong>: poche domande su di te.</li>
+          <li><strong>Analisi di spesa</strong>: le tue spese a confronto con persone simili.</li>
+          <li><strong>Da sapere</strong>: spiegazioni chiare, senza giudizi.</li>
+        </ul>
+      </div>
+      <div class="colonna-evidenza">
+        <div class="numeri-grandi">
+          <div class="numero-blocco"><div class="numero">1</div><div class="didascalia">Profilo</div></div>
+          <div class="numero-blocco"><div class="numero">2</div><div class="didascalia">Analisi di spesa</div></div>
+          <div class="numero-blocco"><div class="numero">3</div><div class="didascalia">Da sapere</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; font-style:italic; color:var(--viola-supp); font-weight:700; margin-top:0.4rem;">Capire prima di decidere.</div>
+    <div class="footer-business">
+      <span>In tasca mia | Hagenthon 2026</span>
+      <span>Copyright &copy; 2026 Accenture. All rights reserved.</span>
+      <span>3 / 12</span>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- SLIDE 4 — PRIMA E DOPO (business)                              -->
+  <!-- ============================================================= -->
+  <section class="slide content">
+    <div class="kicker"><span class="segno">&gt;</span> IL CAMBIAMENTO</div>
+    <h1 class="titolo-messaggio">Da un numero isolato a un confronto chiaro.</h1>
+    <div class="sottotitolo">Esempio: auto e mobilità.</div>
+    <div class="griglia-contenuto">
+      <div class="colonna-testo">
+        <div class="mini">Prima, Marco vede solo un numero e non sa se è normale. Dopo, vede lo stesso numero accanto alla media di persone simili, con una spiegazione del perché.</div>
+        <div class="nota-demo">Spazio per la demo dal vivo</div>
+      </div>
+      <div class="colonna-evidenza">
+        <div class="numeri-grandi">
+          <div class="numero-blocco"><div class="numero">6.200 €</div><div class="didascalia">la tua spesa</div></div>
+          <div class="numero-blocco"><div class="numero">5.000 €</div><div class="didascalia">media di persone simili</div></div>
+        </div>
+        <div class="mini">1.200 € in più della media.</div>
+      </div>
+    </div>
+    <div class="footer-business">
+      <span>In tasca mia | Hagenthon 2026</span>
+      <span>Copyright &copy; 2026 Accenture. All rights reserved.</span>
+      <span>4 / 12</span>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- SLIDE 5 — CONNESSIONI / VISIONE (business)                     -->
+  <!-- ============================================================= -->
+  <section class="slide content">
+    <div class="kicker"><span class="segno">&gt;</span> UNA VISIONE PIÙ AMPIA</div>
+    <h1 class="titolo-messaggio">Verificare e capire: la scelta resta tua.</h1>
+    <div class="sottotitolo">Integrazioni dimostrative con enti e servizi pubblici e di mercato.</div>
+    <div class="griglia-contenuto">
+      <div class="colonna-testo">
+        <ul>
+          <li><strong>ARERA</strong> — Portale Offerte, luce e gas</li>
+          <li><strong>IVASS</strong> / Facile.it / Segugio.it — polizza auto</li>
+          <li><strong>Open Banking</strong> — movimenti, con consenso</li>
+          <li><strong>Banca d'Italia</strong>, App IO/pagoPA, MIMIT, SosTariffe.it</li>
+        </ul>
+      </div>
+      <div class="colonna-evidenza">
+        <div class="numero-blocco"><div class="numero">7</div><div class="didascalia">collegamenti dimostrativi, sviluppi futuri</div></div>
+        <div class="blocco-colore"><span class="segno-blocco">&gt;</span>La scelta resta tua.</div>
+      </div>
+    </div>
+    <div class="footer-business">
+      <span>In tasca mia | Hagenthon 2026</span>
+      <span>Copyright &copy; 2026 Accenture. All rights reserved.</span>
+      <span>5 / 12</span>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- SLIDE 6 — CHIUSURA (scura)                                     -->
+  <!-- ============================================================= -->
+  <section class="slide scena nero">
+    <div class="segno-enorme">&gt;</div>
+    <div class="kicker-scena">Il valore</div>
+    <h1>Più chiaro, più tuo.</h1>
+    <div class="messaggio">Capire prima, decidere dopo — sempre tu.</div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- SLIDE 7 — SEPARATORE ANNEX (viola)                             -->
+  <!-- ============================================================= -->
+  <section class="slide scena viola">
+    <div class="segno-enorme">&gt;</div>
+    <h1>Annex</h1>
+    <div class="messaggio">Dietro le quinte: come l'abbiamo costruita</div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- A1 — LA SQUADRA DI AGENTI (business) — diagramma: unico        -->
+  <!-- elemento grafico ammesso, riquadri e frecce                    -->
+  <!-- ============================================================= -->
+  <section class="slide content">
+    <div class="kicker"><span class="segno">&gt;</span> A1 · LA SQUADRA DI AGENTI</div>
+    <h1 class="titolo-messaggio">Otto agenti specializzati, un flusso controllato.</h1>
+    <div class="sottotitolo">Fasi, approvazioni dell'utente, cicli di correzione con limite.</div>
+    <div class="griglia-contenuto piena">
+      <div class="flow">
+        <div class="riga">
+          <div class="fase-box">0 · Requisiti</div>
+          <div class="agente-box">analista-funzionale</div>
+          <span class="freccia">→</span>
+          <div class="fase-box">Sfida</div>
+          <div class="agente-box">architetto + conformità (parallelo)</div>
+        </div>
+        <div class="riga">
+          <span class="freccia">→</span>
+          <div class="fase-box">Risposta</div>
+          <div class="agente-box">analista-funzionale</div>
+          <span class="stop-badge">STOP: approva utente</span>
+        </div>
+        <div class="riga">
+          <span class="freccia">→</span>
+          <div class="fase-box">1 · Architettura</div>
+          <div class="agente-box">architetto</div>
+          <span class="stop-badge">STOP: approva utente</span>
+        </div>
+        <div class="riga">
+          <span class="freccia">→</span>
+          <div class="fase-box">2 · Sviluppo</div>
+          <div class="agente-box">dev-backend + dev-frontend (parallelo)</div>
+        </div>
+        <div class="riga">
+          <span class="freccia">→</span>
+          <div class="fase-box">3 · Verifica</div>
+          <div class="agente-box">tester</div>
+          <span class="ciclo-badge">ciclo correzione ↻ max 3 — usati 0</span>
+        </div>
+        <div class="riga">
+          <span class="freccia">→</span>
+          <div class="fase-box">4 · Revisioni</div>
+          <div class="agente-box">sicurezza-qualità + conformità (parallelo)</div>
+          <span class="ciclo-badge">ciclo correzione ↻ max 2 — usati 1</span>
+        </div>
+        <div class="riga">
+          <span class="freccia">→</span>
+          <div class="fase-box">5 · Doc + Presentazione</div>
+          <div class="agente-box">architetto → presentatore</div>
+          <span class="stop-badge">revisione utente</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-business">
+      <span>In tasca mia | Hagenthon 2026</span>
+      <span>Copyright &copy; 2026 Accenture. All rights reserved.</span>
+      <span>8 / 12</span>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- A2 — LE ISTRUZIONI (business)                                  -->
+  <!-- ============================================================= -->
+  <section class="slide content">
+    <div class="kicker"><span class="segno">&gt;</span> A2 · LE ISTRUZIONI</div>
+    <h1 class="titolo-messaggio">Ogni agente segue la stessa struttura.</h1>
+    <div class="sottotitolo">Ruolo, Input, Passi, Formato, Vincoli, Cosa NON fare, Quando chiedere.</div>
+    <div class="griglia-contenuto">
+      <div class="colonna-testo">
+        <div class="estratto">dev-backend.md — "Quando fermarti e chiedere"
+
+Build ancora rossa dopo 3 tentativi
+→ ESITO: BLOCCATO, con l'errore
+riassunto in max 5 righe
+(file:riga e messaggio).</div>
+      </div>
+      <div class="colonna-evidenza">
+        <div class="numeri-grandi">
+          <div class="numero-blocco"><div class="numero">7</div><div class="didascalia">sezioni fisse per ogni file agente</div></div>
+          <div class="numero-blocco"><div class="numero">3</div><div class="didascalia">skill condivise</div></div>
+          <div class="numero-blocco"><div class="numero">2</div><div class="didascalia">comandi slash</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-business">
+      <span>In tasca mia | Hagenthon 2026</span>
+      <span>Copyright &copy; 2026 Accenture. All rights reserved.</span>
+      <span>9 / 12</span>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- A3 — CONTROLLO RECIPROCO E ROBUSTEZZA (business)               -->
+  <!-- ============================================================= -->
+  <section class="slide content">
+    <div class="kicker"><span class="segno">&gt;</span> A3 · CONTROLLO RECIPROCO</div>
+    <h1 class="titolo-messaggio">Gli agenti si controllano a vicenda, con limiti chiari.</h1>
+    <div class="sottotitolo">Sfida ai requisiti, cicli di correzione, import resiliente.</div>
+    <div class="griglia-contenuto">
+      <div class="colonna-testo">
+        <ul>
+          <li>7 obiezioni (6 architetto + 1 conformità) sui requisiti: tutte ACCETTATA, prima di scrivere codice.</li>
+          <li>Verifica: max 3 cicli, usati 0. Revisioni: max 2 cicli, usato 1 (3 rilievi di testo corretti, 0 contestazioni).</li>
+          <li>Una riga del file dati non valida viene scartata: le altre continuano a essere importate.</li>
+        </ul>
+      </div>
+      <div class="colonna-evidenza">
+        <div class="numeri-grandi">
+          <div class="numero-blocco"><div class="numero">7/7</div><div class="didascalia">obiezioni accettate</div></div>
+          <div class="numero-blocco"><div class="numero">0</div><div class="didascalia">contestazioni confermate</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-business">
+      <span>In tasca mia | Hagenthon 2026</span>
+      <span>Copyright &copy; 2026 Accenture. All rights reserved.</span>
+      <span>10 / 12</span>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- A4 — EFFICIENZA E QUALITÀ TECNICA (business)                   -->
+  <!-- ============================================================= -->
+  <section class="slide content">
+    <div class="kicker"><span class="segno">&gt;</span> A4 · EFFICIENZA E QUALITÀ</div>
+    <h1 class="titolo-messaggio">Il modello giusto per ogni compito.</h1>
+    <div class="sottotitolo">Meno token dove bastano regole fisse, più ragionamento dove servono decisioni.</div>
+    <div class="griglia-contenuto">
+      <div class="colonna-testo">
+        <table class="griglia">
+          <tr><th>Modello</th><th>Perché</th></tr>
+          <tr><td>opus</td><td>ragionamento e decisioni (requisiti, architettura)</td></tr>
+          <tr><td>sonnet</td><td>codice e analisi tecnica</td></tr>
+          <tr><td>haiku</td><td>controlli ripetitivi su regole scritte</td></tr>
+        </table>
+        <div class="mini" style="margin-top:0.5rem;">
+          Criteri di accettazione: <span class="dato" data-chiave="CA_PASS">13 superati</span>, <span class="dato" data-chiave="CA_FAIL">0 falliti</span> (1 da verificare in demo)
+        </div>
+      </div>
+      <div class="colonna-evidenza">
+        <div class="numeri-grandi">
+          <div class="numero-blocco"><div class="numero">35/35</div><div class="didascalia">test backend superati</div></div>
+          <div class="numero-blocco"><div class="numero">0 · 0 · 1 · 0</div><div class="didascalia">sicurezza: bloccante · alta · media · bassa</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-business">
+      <span>In tasca mia | Hagenthon 2026</span>
+      <span>Copyright &copy; 2026 Accenture. All rights reserved.</span>
+      <span>11 / 12</span>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- A5 — RISCHI, CHIAREZZA E RUOLO DELL'AI (business)              -->
+  <!-- ============================================================= -->
+  <section class="slide content">
+    <div class="kicker"><span class="segno">&gt;</span> A5 · RISCHI E RUOLO DELL'AI</div>
+    <h1 class="titolo-messaggio">L'AI costruisce, l'utente decide.</h1>
+    <div class="sottotitolo">Risk &amp; Clarity Note e limiti noti.</div>
+    <div class="griglia-contenuto">
+      <div class="colonna-testo">
+        <ul>
+          <li>Disclaimer e fonte invariati, con testo esatto, in ogni schermata di risultato.</li>
+          <li>Gli agenti hanno scritto requisiti, codice, test e revisioni; l'utente ha deciso tema, nome, opzioni sensibili e ha approvato ogni fase chiave.</li>
+          <li>Limiti noti: accesso simulato, dati inventati e dichiarati come tali.</li>
+        </ul>
+      </div>
+      <div class="colonna-evidenza">
+        <div class="numero-blocco"><div class="numero">47/50</div><div class="didascalia">testi conformi al primo giro, 0 blocchi</div></div>
+      </div>
+    </div>
+    <div class="footer-business">
+      <span>In tasca mia | Hagenthon 2026</span>
+      <span>Copyright &copy; 2026 Accenture. All rights reserved.</span>
+      <span>12 / 12</span>
+    </div>
+  </section>
+
+</div>
+
+<button id="prev" class="nav-btn" aria-label="Precedente">&#8592;</button>
+<button id="next" class="nav-btn" aria-label="Successiva">&#8594;</button>
+<div id="paginaFlottante" class="pagina-flottante"><span id="corrente">1</span> / <span id="totale">12</span></div>
+
+<script>
+(function(){
+  var slides = document.querySelectorAll('.slide');
+  var totale = slides.length;
+  var indice = 0;
+  var paginaFlottante = document.getElementById('paginaFlottante');
+
+  function mostra(n){
+    if(n < 0) n = 0;
+    if(n > totale - 1) n = totale - 1;
+    slides[indice].classList.remove('active');
+    indice = n;
+    slides[indice].classList.add('active');
+    document.getElementById('corrente').textContent = indice + 1;
+    if(slides[indice].classList.contains('content')){
+      paginaFlottante.classList.add('nascosta');
+    } else {
+      paginaFlottante.classList.remove('nascosta');
+    }
+  }
+
+  document.getElementById('next').addEventListener('click', function(e){
+    e.stopPropagation();
+    mostra(indice + 1);
+  });
+  document.getElementById('prev').addEventListener('click', function(e){
+    e.stopPropagation();
+    mostra(indice - 1);
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Spacebar'){
+      e.preventDefault();
+      mostra(indice + 1);
+    } else if(e.key === 'ArrowLeft'){
+      e.preventDefault();
+      mostra(indice - 1);
+    }
+  });
+
+  document.querySelector('.deck').addEventListener('click', function(e){
+    if(e.target.closest('.nav-btn')) return;
+    mostra(indice + 1);
+  });
+
+  document.getElementById('totale').textContent = totale;
+  mostra(0);
+})();
+</script>
+</body>
+</html>
